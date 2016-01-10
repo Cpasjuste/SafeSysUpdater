@@ -151,13 +151,10 @@ void waitY() {
 
 void installUpdates(bool downgrade) {
 
-    std::vector<fs::DirEntry> filesDirs = fs::listDirContents(u"/updates", u".cia;"); // Filter for .cia files
     printf("Please wait...\n\n");
     std::vector<TitleInfo> installedTitles = getTitleInfos(MEDIATYPE_NAND);
     std::vector<TitleInstallInfo> titles;
 
-    Buffer<char> tmpStr(256);
-    Result res;
     TitleInstallInfo installInfo;
     AM_TitleEntry ciaFileInfo;
     fs::File f;
@@ -290,10 +287,10 @@ void installUpdates(bool downgrade) {
 
         if (it.requiresDelete) deleteTitle(MEDIATYPE_NAND, it.entry.titleID);
         installCia(it.path, MEDIATYPE_NAND);
-        if (nativeFirm && (res = AM_InstallFirm(it.entry.titleID))) {
+        if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
             //    throw titleException("main.cpp", __LINE__, res, "Failed to install NATIVE_FIRM!");
             printf("\x1b[31mFAIL ... trying again\x1b[0m\n");
-            if (nativeFirm && (res = AM_InstallFirm(it.entry.titleID))) {
+            if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
                 printf("\x1b[31mFAIL\x1b[0m\n");
                 printf("\x1b[31mYou should be able to use recovery to fix...\x1b[0m\n");
                 waitExitKey();
