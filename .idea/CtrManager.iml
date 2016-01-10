@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DevkitArm3DS.cmake" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cmake/FindCTRULIB.cmake" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cmake/Tools3DS.cmake" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/SuperUserLib3DS/LICENSE.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/SuperUserLib3DS/README.md" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/SuperUserLib3DS/libsu.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/SuperUserLib3DS/libsu.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/cfgutables.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/libmd5-rfc/md5.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/libmd5-rfc/md5.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/LICENSE" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/Makefile" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/README.md" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/_Makefile" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/app/BannerAudio.bcwav" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/app/IcnSettings.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/app/banner.bnr" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/app/banner.png" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/app/build-cia.rsf" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/app/icon.icn" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/app/icon24x24.png" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/app/icon48x48.png" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/include/error.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/include/fs.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/include/misc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/include/title.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/include/zip/crypt.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/include/zip/ioapi.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/include/zip/unzip.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/include/zip/zip.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/source/fs.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/source/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/source/misc.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/source/title.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/source/zip/ioapi.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/source/zip/unzip.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/sysUpdater/source/zip/zip.cpp" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include" />
+          <root url="file:///opt/devkitpro/devkitARM/arm-none-eabi/include" />
+          <root url="file:///opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/5.3.0/include" />
+          <root url="file:///opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/5.3.0/include-fixed" />
+          <root url="file:///opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/5.3.0/include/objc" />
+          <root url="file:///opt/devkitpro/libctru/include" />
+          <root url="file:///opt/devkitpro/portlibs/armv6k/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include" />
+          <root url="file:///opt/devkitpro/devkitARM/arm-none-eabi/include" />
+          <root url="file:///opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/5.3.0/include" />
+          <root url="file:///opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/5.3.0/include-fixed" />
+          <root url="file:///opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/5.3.0/include/objc" />
+          <root url="file:///opt/devkitpro/libctru/include" />
+          <root url="file:///opt/devkitpro/portlibs/armv6k/include" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include/misc.h" />
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include/title.h" />
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include/zip/crypt.h" />
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include/zip/ioapi.h" />
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include/fs.h" />
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include/error.h" />
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include/zip/unzip.h" />
+          <root url="file://$MODULE_DIR$/source/sysUpdater/include/zip/zip.h" />
+        </excluded>
+      </library>
+    </orderEntry>
+  </component>
+</module>
