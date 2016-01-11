@@ -12,7 +12,7 @@
 	#define debugPrintError(...) 	({return -1;})
 #endif
 
-u8 isNew3DS = 0;
+static u8 isNew3DS = 0;
 
 // Exploits functions that will be used later
 int memchunkhax2();

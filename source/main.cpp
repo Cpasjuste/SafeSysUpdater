@@ -16,10 +16,13 @@
 #include "Updates/UpdateInfoN3dsUsa.h"
 #include "Updates/UpdateInfoO3dsUsa.h"
 #include "Updates/UpdateInfoO3dsEur.h"
+#include "memchunkhax2/source/memchunkhax2.h"
 
 #ifndef CITRA
 #include "ctr_shell.h"
 #endif
+
+bool simulation = false;
 
 typedef struct {
     char path[128];
@@ -108,14 +111,26 @@ int checkMD5(const char *file, const char *md5) {
 }
 
 int getAMu() {
+
     // try to get arm11
-    suInit();
+    //suInit();
+
     // verify am:u access
     Handle amHandle = 0;
     srvGetServiceHandleDirect(&amHandle, "am:u");
     if(amHandle) {
         svcCloseHandle(amHandle);
         return 0;
+    }
+
+    // no am:u access, try memchunkhax2
+    u8 ret = execute_memchunkhax2();
+    if(ret == 1) {
+        srvGetServiceHandleDirect(&amHandle, "am:u");
+        if(amHandle) {
+            svcCloseHandle(amHandle);
+            return 0;
+        }
     }
     return 1;
 }
@@ -152,6 +167,20 @@ void waitY() {
     }
 }
 
+u32 waitKeyYA() {
+    while (aptMainLoop()) {
+        hidScanInput();
+        if (hidKeysDown() & KEY_Y) {
+            return KEY_Y;
+        } else if (hidKeysDown() & KEY_A) {
+            return KEY_A;
+        }
+        gfxFlushBuffers();
+        gfxSwapBuffers();
+        gspWaitForVBlank();
+    }
+}
+
 UpdateInfo *getUpdateInfo(int model, int region) {
     switch(region) {
         case 0: { // JPN
@@ -183,171 +212,9 @@ UpdateInfo *getUpdateInfo(int model, int region) {
     return NULL;
 }
 
-void installUpdatesFromFile(bool downgrade) {
-
-    printf("Please wait...\n\n");
-    std::vector<TitleInfo> installedTitles = getTitleInfos(MEDIATYPE_NAND);
-    std::vector<TitleInstallInfo> titles;
-
-    TitleInstallInfo installInfo;
-    AM_TitleEntry ciaFileInfo;
-    fs::File f;
-
-    char updateFW[64], updateModel[64], updateRegion[64];
-
-    // get system info
-    SysInfo *sysInfo = getSysInfo();
-    if (sysInfo == NULL) {
-        printf("can't get system information...\n");
-        waitExitKey();
-    }
-
-    // open update configuration file
-    printf("check config file -> ");
-    char cfg[256];
-    sprintf(cfg, "/updates/%s_%s.cfg",
-            CFGU_MODEL_TABLE[(int) sysInfo->model], CFGU_REGION_TABLE[(int) sysInfo->region]);
-    FILE *fp = fopen(cfg, "rb");
-    if (fp == NULL) {
-        printf("\x1b[31mFAIL\x1b[0m\n");
-        printf("could not open %s\n", cfg);
-        waitExitKey();
-    }
-    printf("\x1b[32mGOOD\x1b[0m\n");
-
-    // check first line for update info
-    printf("check update infos -> ");
-    char line[128];
-    fgets(line, 128, fp);
-    if(strlen(line) <= 0) {
-        printf("\x1b[31mFAIL\x1b[0m\n");
-        printf("invalid configuration\n");
-        waitExitKey();
-    }
-    printf("\x1b[32mGOOD\x1b[0m\n");
-
-    // check if model match
-    printf("check model -> ");
-    char *token = strtok (line, " ");
-    if(token == NULL) {
-        printf("\x1b[31mFAIL\x1b[0m\n");
-        printf("invalid configuration\n");
-        waitExitKey();
-    } else if(strcasecmp(token, CFGU_MODEL_TABLE[(int)sysInfo->model]) != 0) {
-        printf("\x1b[31mFAIL\x1b[0m\n");
-        printf("model does not match: update:%s/device:%s\n", token, CFGU_MODEL_TABLE[(int)sysInfo->model]);
-        waitExitKey();
-    }
-    strncpy(updateModel, token, 64);
-    printf("\x1b[32mGOOD\x1b[0m\n");
-
-    // check if region match
-    printf("check region -> ");
-    token = strtok (NULL, " ");
-    if(token == NULL) {
-        printf("\x1b[31mFAIL\x1b[0m\n");
-        printf("invalid configuration\n");
-        waitExitKey();
-    } else if(strcasecmp(token, CFGU_REGION_TABLE[(int)sysInfo->region]) != 0) {
-        printf("\x1b[31mFAIL\x1b[0m\n");
-        printf("region does not match: update:%s/device:%s\n", token, CFGU_REGION_TABLE[(int)sysInfo->region]);
-        waitExitKey();
-    }
-    strncpy(updateRegion, token, 64);
-    printf("\x1b[32mGOOD\x1b[0m\n");
-
-    // check update firmware version
-    token = strtok (NULL, " ");
-    if(token != NULL) {
-        strncpy(updateFW, token, 64);
-    }
-
-    // check md5/add files
-    printf("\nChecking update integrity...\n");
-    char *md5 = (char*)malloc(sizeof(char)*33);
-    char *cia = (char*)malloc(sizeof(char)*65);
-
-    while(fgets(line, 128, fp) != NULL) {
-        if(strlen(line) <= 16) continue;
-        token = strtok (line, " ");
-        memset(md5, 0, 33); strncpy(md5, token, 32);
-        token = strtok (NULL, " ");
-        memset(cia, 0, 65); snprintf(cia, 64, "/updates/%s", token);
-        cia[strlen(cia)-1] = '\0';
-        printf("MD5: %s -> ", cia);
-        if(checkMD5(cia, md5) != 0) {
-            printf("\x1b[31mFAIL\x1b[0m\n");
-            waitExitKey();
-        }
-        printf("\x1b[32mGOOD\x1b[0m\n");
-
-        FS_Path filePath = fsMakePath(PATH_ASCII, cia);
-        f.open(filePath, FS_OPEN_READ);
-        if (AM_GetCiaFileInfo(MEDIATYPE_NAND, &ciaFileInfo, f.getFileHandle())) {
-            printf("can't get cia information (hax didn't succeed?)\n");
-            waitExitKey();
-        }
-
-        int cmpResult = versionCmp(installedTitles, ciaFileInfo.titleID, ciaFileInfo.version);
-        if ((downgrade && cmpResult != 0) || (cmpResult > 0)) {
-            strncpy(installInfo.path, cia, 128);
-            installInfo.entry = ciaFileInfo;
-            installInfo.requiresDelete = downgrade && cmpResult < 0;
-            titles.push_back(installInfo);
-        }
-    }
-    free(md5); free(cia);
-    fclose(fp);
-
-    std::sort(titles.begin(), titles.end(), downgrade ? sortTitlesLowToHigh : sortTitlesHighToLow);
-
-    consoleClear();
-    printf("\ndevice: %s, update: %s -> \x1b[32mGOOD\x1b[0m\n\n", CFGU_MODEL_TABLE[(int) sysInfo->model], updateModel);
-    printf("region: %s, update: %s -> \x1b[32mGOOD\x1b[0m\n\n", CFGU_REGION_TABLE[(int) sysInfo->region], updateRegion);
-    printf("downgrade to: \x1b[32m%s\x1b[0m\n", updateFW);
-    printf("\n\x1b[32mSEEMS GOOD\x1b[0m\n\n");
-    printf("press (Y) to downgrade...\n");
-    printf("press (A) to cancel...\n");
-    waitY();
-    consoleClear();
-
-    for (auto it : titles) {
-        bool nativeFirm = it.entry.titleID == 0x0004013800000002LL || it.entry.titleID == 0x0004013820000002LL;
-        if (nativeFirm) {
-            printf("NATIVE_FIRM -> ");
-        } else {
-            printf("%s -> ", it.path);
-        }
-
-        if (it.requiresDelete) deleteTitle(MEDIATYPE_NAND, it.entry.titleID);
-        installCia(it.path, MEDIATYPE_NAND);
-        if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
-            //    throw titleException("main.cpp", __LINE__, res, "Failed to install NATIVE_FIRM!");
-            printf("\x1b[31mFAIL ... trying again\x1b[0m\n");
-            if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
-                printf("\x1b[31mFAIL\x1b[0m\n");
-                printf("\x1b[31mYou should be able to use recovery to fix...\x1b[0m\n");
-                waitExitKey();
-            }
-        }
-
-        printf("\x1b[32mINSTALLED\x1b[0m\n");
-    }
-
-    if (sysInfo != NULL) {
-        free(sysInfo);
-    }
-
-    printf("\n\nUpdates installed. Rebooting in 10 seconds...\n");
-    svcSleepThread(10000000000LL);
-    aptOpenSession();
-    APT_HardwareResetAsync();
-    aptCloseSession();
-}
-
 void downgrade() {
 
-    printf("init -> ");
+    printf("\ninit -> ");
     std::vector<TitleInfo> installedTitles = getTitleInfos(MEDIATYPE_NAND);
     std::vector<TitleInstallInfo> titles;
     TitleInstallInfo installInfo;
@@ -367,6 +234,7 @@ void downgrade() {
 
     printf("check update info -> ");
     UpdateInfo *update = getUpdateInfo(sysInfo->model, sysInfo->region);
+    //UpdateInfo *update = getUpdateInfo(2, 2);
     if(update == NULL) {
         printf("\x1b[31mFAIL\x1b[0m\n");
         printf("can't find update config for your system...\n");
@@ -384,34 +252,43 @@ void downgrade() {
         }
         printf("\x1b[32mGOOD\x1b[0m\n");
 
-        // add to titles list
-        char path[128]; strncpy(path, it->getPath().c_str(), 128); // fsMakePath doesn't like std::string ?!
-        FS_Path filePath = fsMakePath(PATH_ASCII, path);
-        f.open(filePath, FS_OPEN_READ);
-        if (AM_GetCiaFileInfo(MEDIATYPE_NAND, &ciaFileInfo, f.getFileHandle())) {
-            printf("can't get cia information (hax didn't succeed?)\n");
-            waitExitKey();
-        }
-        int cmpResult = versionCmp(installedTitles, ciaFileInfo.titleID, ciaFileInfo.version);
-        if (cmpResult != 0) {
-            strncpy(installInfo.path, path, 128);
-            installInfo.entry = ciaFileInfo;
-            installInfo.requiresDelete = cmpResult < 0;
-            titles.push_back(installInfo);
+        if(!simulation) {
+            // add to titles list
+            char path[128];
+            strncpy(path, it->getPath().c_str(), 128); // fsMakePath doesn't like std::string ?!
+            FS_Path filePath = fsMakePath(PATH_ASCII, path);
+            f.open(filePath, FS_OPEN_READ);
+            if (AM_GetCiaFileInfo(MEDIATYPE_NAND, &ciaFileInfo, f.getFileHandle())) {
+                printf("can't get cia information (hax didn't succeed?)\n");
+                waitExitKey();
+            }
+            int cmpResult = versionCmp(installedTitles, ciaFileInfo.titleID, ciaFileInfo.version);
+            if (cmpResult != 0) {
+                strncpy(installInfo.path, path, 128);
+                installInfo.entry = ciaFileInfo;
+                installInfo.requiresDelete = cmpResult < 0;
+                titles.push_back(installInfo);
+            }
         }
     }
-
-    std::sort(titles.begin(), titles.end(), sortTitlesLowToHigh);
 
     consoleClear();
     printf("\ndevice: %s, update: %s -> \x1b[32mGOOD\x1b[0m\n\n", CFGU_MODEL_TABLE[(int) sysInfo->model], update->model.c_str());
     printf("region: %s, update: %s -> \x1b[32mGOOD\x1b[0m\n\n", CFGU_REGION_TABLE[(int) sysInfo->region], update->region.c_str());
     printf("downgrade to: \x1b[32m%s\x1b[0m\n", update->version.c_str());
     printf("\n\x1b[32mSEEMS GOOD\x1b[0m\n\n");
+
+    if(simulation) {
+        printf("\x1b[32m-> UPDATE FILES ARE GOOD <-\x1b[0m\n\n");
+        waitExitKey();
+    }
+
     printf("press (Y) to downgrade...\n");
     printf("press (A) to cancel...\n");
     waitY();
     consoleClear();
+
+    std::sort(titles.begin(), titles.end(), sortTitlesLowToHigh);
 
     for (auto it : titles) {
         bool nativeFirm = it.entry.titleID == 0x0004013800000002LL || it.entry.titleID == 0x0004013820000002LL;
@@ -455,13 +332,26 @@ int main(int argc, char *argv[]) {
     appInit();
     osSetSpeedupEnable(false); // disable speedup for stability ?
 
-    printf("executing memchunkhax2...\n");
-    if(getAMu() != 0) {
-        printf("can't get am:u service...\n");
-        waitExitKey();
+    printf("\nSafeSysUpdater @ Cpasjuste\n");
+    printf("\nSysUpdater @ profi200\n");
+    printf("\nmemchunkhax2 @ Steveice10\n\n");
+
+    printf("press (Y) to downgrade...\n");
+    printf("press (A) to check update files...\n");
+    u32 key = waitKeyYA();
+    if(key == KEY_A) simulation = true;
+    consoleClear();
+
+    if(!simulation) {
+        printf("getting am:u access -> ");
+        if (getAMu() != 0) {
+            printf("\x1b[31mFAIL\x1b[0m\n");
+            printf("can't get am:u service...try again :x\n");
+            waitExitKey();
+        }
+        printf("\x1b[32mGOOD\x1b[0m\n");
     }
 
-    consoleClear();
     downgrade();
     waitExitKey();
 
