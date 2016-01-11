@@ -1,0 +1,115 @@
+//
+// Created by cpasjuste on 11/01/16.
+//
+
+#include "UpdateInfoN3dsEur.h"
+
+UpdateInfoN3dsEur::UpdateInfoN3dsEur() {
+
+    this->model = "n3DS";
+    this->region = "EUR";
+    this->version = "9.2.0-20";
+
+    items.push_back( UpdateItem("7d9e073a6349ddef77e67b2102b4eea5", "/updates/0004001000022000.cia") );
+    items.push_back( UpdateItem("d94061a7387a3a2438895d10523ff9c2", "/updates/0004001000022100.cia") );
+    items.push_back( UpdateItem("eb506a019b83caea2155a3592d6c9652", "/updates/0004001000022400.cia") );
+    items.push_back( UpdateItem("d937d29175958e53be4904cffba70cd6", "/updates/0004001000022900.cia") );
+    items.push_back( UpdateItem("35b92e369a764056df40413910091dfb", "/updates/0004001000022A00.cia") );
+    items.push_back( UpdateItem("910e88f01b30a3638cf83eaa728817c3", "/updates/000400100002C100.cia") );
+    items.push_back( UpdateItem("a63906c0fb4e40d6dd5eef8913261d1b", "/updates/0004001020022300.cia") );
+    items.push_back( UpdateItem("d6b018c2b45cb8861492296898ca24c7", "/updates/0004001020022D00.cia") );
+    items.push_back( UpdateItem("cf9d88bd14b5258681809dedee82f1e9", "/updates/0004001020025100.cia") );
+    items.push_back( UpdateItem("150c114fb6b69bcee55828e195e8f331", "/updates/000400102002D000.cia") );
+    items.push_back( UpdateItem("ed00addc8136921ab5a04af8620b8864", "/updates/000400102002D200.cia") );
+    items.push_back( UpdateItem("90e45cb7bfe87d2fc1a0e9c4217499a0", "/updates/000400102002D400.cia") );
+    items.push_back( UpdateItem("e8ef26b1bd96524b3fed21270db0dde3", "/updates/000400102002D600.cia") );
+    items.push_back( UpdateItem("3bd5e62beebe124ea662f9fc89815dcf", "/updates/0004001B00010702.cia") );
+    items.push_back( UpdateItem("045059b89235aa57ff5442c7a0d2883b", "/updates/0004001B00018002.cia") );
+    items.push_back( UpdateItem("8a91c3c61d3ed0d6ff2d50708d709334", "/updates/0004001B00018202.cia") );
+    items.push_back( UpdateItem("c4b629e3b29772b01c027e0271e6e351", "/updates/0004003000008A02.cia") );
+    items.push_back( UpdateItem("c33acedad5a43264ebb1fd2f75173355", "/updates/0004003000009802.cia") );
+    items.push_back( UpdateItem("4d0f2d9e67967c4f2199c1738c699873", "/updates/0004003000009902.cia") );
+    items.push_back( UpdateItem("2853cafc2d474470fc40ef57937e150f", "/updates/0004003000009B02.cia") );
+    items.push_back( UpdateItem("3b4ceee32b305d2da002df33e1393655", "/updates/0004003000009C02.cia") );
+    items.push_back( UpdateItem("1459b4bc1c93c051f0b0377b2716c40d", "/updates/0004003000009F02.cia") );
+    items.push_back( UpdateItem("b8465ae1c4e6eb2eb2fe67ebe30b1f04", "/updates/000400300000A002.cia") );
+    items.push_back( UpdateItem("4e5eb42898e2a06b9795b291e99f0e0b", "/updates/000400300000BA02.cia") );
+    items.push_back( UpdateItem("8e3746dda884745d2a1e90b622b08d97", "/updates/000400300000BE02.cia") );
+    items.push_back( UpdateItem("e9528b0f9502384025a322fb3ae55b17", "/updates/000400300000C502.cia") );
+    items.push_back( UpdateItem("7238145a566868a989f6f08305531679", "/updates/000400300000CD02.cia") );
+    items.push_back( UpdateItem("4146e665716b5f3ae9199578148c81c6", "/updates/000400300000D002.cia") );
+    items.push_back( UpdateItem("96723409316d1acbfb7b3fa917ad12ec", "/updates/000400300000D102.cia") );
+    items.push_back( UpdateItem("be827724afdcaf73eb8444e1e62a5837", "/updates/000400300000D302.cia") );
+    items.push_back( UpdateItem("ffaeb36eb48b93f44f309e838b6d6516", "/updates/000400300000D602.cia") );
+    items.push_back( UpdateItem("82a3c23a561eb942614d5ff325d77f0a", "/updates/000400300000F602.cia") );
+    items.push_back( UpdateItem("627751e1d6c5357c065e9e2751f0b88f", "/updates/0004003020008A03.cia") );
+    items.push_back( UpdateItem("f898090822cfe6897a1c53ada67cc031", "/updates/0004003020009D02.cia") );
+    items.push_back( UpdateItem("ccc7f374eaaeee93fc425f21f21f7949", "/updates/000400302000C503.cia") );
+    items.push_back( UpdateItem("6e1fc5444e80e649f4b176fed750c3e7", "/updates/000400302000D003.cia") );
+    items.push_back( UpdateItem("48b93d7480a86be3fbfba87e24dffb35", "/updates/0004009B00012102.cia") );
+    items.push_back( UpdateItem("1c382fd53103d72a65ead3c5fa0bc371", "/updates/0004009B00013102.cia") );
+    items.push_back( UpdateItem("b27d85b97fd94fd6fb78bf713cc0dd4f", "/updates/000400DB00010302.cia") );
+    items.push_back( UpdateItem("6f221e6c3662cb840f9d86dc9689efc8", "/updates/000400DB00010502.cia") );
+    items.push_back( UpdateItem("0476df9af36d0a2300b475b254c4e161", "/updates/000400DB00017102.cia") );
+    items.push_back( UpdateItem("b44a461d96df436fee6e9fec38308434", "/updates/000400DB20016102.cia") );
+    items.push_back( UpdateItem("d54e05f09eefdb2acdd9aad5b5f3fda9", "/updates/0004013000001502.cia") );
+    items.push_back( UpdateItem("d8eea6c7f5a906b4d8226eff5ffa1a22", "/updates/0004013000001702.cia") );
+    items.push_back( UpdateItem("0545e69671b600f7729a6cb3bf9f663d", "/updates/0004013000001802.cia") );
+    items.push_back( UpdateItem("d709c39abd711bc96d00b4ffc236adfb", "/updates/0004013000002402.cia") );
+    items.push_back( UpdateItem("7cf379b8438556cf756b50519090f071", "/updates/0004013000002602.cia") );
+    items.push_back( UpdateItem("c242661cb22b900bb8095c0f86a628aa", "/updates/0004013000002702.cia") );
+    items.push_back( UpdateItem("c7ca7097ecb2326d7b877ed90777d5c6", "/updates/0004013000002802.cia") );
+    items.push_back( UpdateItem("4cd549922730653f80cc673e07f80e84", "/updates/0004013000002902.cia") );
+    items.push_back( UpdateItem("c708ee846a01e78ce33f1df1dc063b93", "/updates/0004013000002B02.cia") );
+    items.push_back( UpdateItem("6938c0fed001682a4c1a0a84c7e89b23", "/updates/0004013000002C02.cia") );
+    items.push_back( UpdateItem("bbaf00da95bcd48ba30db9c29bc5d710", "/updates/0004013000002D02.cia") );
+    items.push_back( UpdateItem("53e56a11ad82534142f4c2aff65b8ce0", "/updates/0004013000002E02.cia") );
+    items.push_back( UpdateItem("73130495744f6881e0f9a68897a1886a", "/updates/0004013000002F02.cia") );
+    items.push_back( UpdateItem("fad6e0d994045889b406b8564111c26d", "/updates/0004013000003102.cia") );
+    items.push_back( UpdateItem("903fcca30e252a558339ba9be36e64b8", "/updates/0004013000003202.cia") );
+    items.push_back( UpdateItem("2bde1d8af1d1cdc247417f6d289b2454", "/updates/0004013000003302.cia") );
+    items.push_back( UpdateItem("f40fd755269c4150b84978b41d5abf7b", "/updates/0004013000003402.cia") );
+    items.push_back( UpdateItem("772bc9a97125e76d3183cb127786579a", "/updates/0004013000003502.cia") );
+    items.push_back( UpdateItem("8a52dabcf88911638995a615c8e5c6d0", "/updates/0004001B00018102.cia") );
+    items.push_back( UpdateItem("1a00f5e0600b59a974c2e20d9737f2e3", "/updates/000400300000D402.cia") );
+    items.push_back( UpdateItem("70fcaa9466840f77198cfc3af26cb1e4", "/updates/0004013000001D02.cia") );
+    items.push_back( UpdateItem("70d9f078c0728c72b2311e6a2a234f68", "/updates/0004013000003702.cia") );
+    items.push_back( UpdateItem("0f9e0e3cb762d67b3a6a8ea55a2512c5", "/updates/0004013020002103.cia") );
+    items.push_back( UpdateItem("05386ec81b9a37f316156d5b43e2b3e5", "/updates/0004013000003802.cia") );
+    items.push_back( UpdateItem("39d61bd8c6d72f752dc79cc8ddda625f", "/updates/0004013000008002.cia") );
+    items.push_back( UpdateItem("479c987c0a96914049c8e83132f61d33", "/updates/0004013020001503.cia") );
+    items.push_back( UpdateItem("fe8f8dbcdeacb4d5584b8e39982b4d4c", "/updates/0004013020001602.cia") );
+    items.push_back( UpdateItem("18bbcfd9d48ee9818646efee3ef6131b", "/updates/0004013020001703.cia") );
+    items.push_back( UpdateItem("ab2748b4a422304868589d5f579354ec", "/updates/0004013020001803.cia") );
+    items.push_back( UpdateItem("0be6e2295c9a6461279ae9af90854b9e", "/updates/0004013020001A03.cia") );
+    items.push_back( UpdateItem("bfb6344c9a36fbbdb5520008c4bda52a", "/updates/0004013020001B03.cia") );
+    items.push_back( UpdateItem("97e7336035309bb7040b43127f13c6cb", "/updates/0004013020001C02.cia") );
+    items.push_back( UpdateItem("f1adad20876ab8b02e803ae6bc78b2e7", "/updates/0004013020001C03.cia") );
+    items.push_back( UpdateItem("29b3672ea308a16265ff948bf8f4fd08", "/updates/0004013020001D03.cia") );
+    items.push_back( UpdateItem("6f531aab4ed75f4d5a77f5117348a839", "/updates/0004013020001E02.cia") );
+    items.push_back( UpdateItem("4f0747ac9491eb57220ff09dab3cef36", "/updates/0004013020001E03.cia") );
+    items.push_back( UpdateItem("4562362f68a61d5bb845d5daf0e7b6dc", "/updates/0004013020001F02.cia") );
+    items.push_back( UpdateItem("b84f97b7691eb6f11c9879859dab5a46", "/updates/0004013020001F03.cia") );
+    items.push_back( UpdateItem("26555279542910687d2a5129a2228f32", "/updates/0004013020002202.cia") );
+    items.push_back( UpdateItem("5f654154a807b05b6477da7753139677", "/updates/0004013020002203.cia") );
+    items.push_back( UpdateItem("bdb6c867e1d039e32f919b48d48e6007", "/updates/0004013020002302.cia") );
+    items.push_back( UpdateItem("049538291b109594f88259d10b872aff", "/updates/0004013020002303.cia") );
+    items.push_back( UpdateItem("1dd0c5700266a2ad276a22846be654dc", "/updates/0004013020002403.cia") );
+    items.push_back( UpdateItem("3f5e42cd3161ed0a105ec0321d6ca126", "/updates/0004013020002703.cia") );
+    items.push_back( UpdateItem("998b81b2aa28de8e54f759543941246b", "/updates/0004013020002903.cia") );
+    items.push_back( UpdateItem("828bef49959d16da3a9308952ff99725", "/updates/0004013020002C03.cia") );
+    items.push_back( UpdateItem("c04cc7eeac8fc2628d44fcf2ed8718f0", "/updates/0004013020002D03.cia") );
+    items.push_back( UpdateItem("b2d681b7c29481cc53d4cdaf53542b50", "/updates/0004013020002E03.cia") );
+    items.push_back( UpdateItem("3fcb75cbd0a41ba94f75100b0b9f0fa7", "/updates/0004013020002F03.cia") );
+    items.push_back( UpdateItem("1ed5d74c9a16a1cf231f464e033bb41f", "/updates/0004013020003103.cia") );
+    items.push_back( UpdateItem("6e5bd1dd876cc4b7753c01b6b7d50b71", "/updates/0004013020003203.cia") );
+    items.push_back( UpdateItem("d43569bc8bcd75ebb8db0ffb8aef2d8c", "/updates/0004013020003303.cia") );
+    items.push_back( UpdateItem("48d5a7f3367389d8c92181606239fbf8", "/updates/0004013020004002.cia") );
+    items.push_back( UpdateItem("8760e1c795ce41498fd20b4be3bb7153", "/updates/0004013020004102.cia") );
+    items.push_back( UpdateItem("4e09700e502f56c2431a5c0fc01f0aaa", "/updates/0004013020004202.cia") );
+    items.push_back( UpdateItem("91807c9da07f1ca3c4ec135f7253db9d", "/updates/0004013020008003.cia") );
+    items.push_back( UpdateItem("11e520d4381dfe14e8c3e0d1ef2c1c24", "/updates/0004013820000002.cia") );
+    items.push_back( UpdateItem("c9f0ec712374388596b0d5155cc1eb5d", "/updates/0004013820000003.cia") );
+    items.push_back( UpdateItem("fca5f3a774eb0318151491ad6a80bdc2", "/updates/0004013820000102.cia") );
+    items.push_back( UpdateItem("9178d8cf42f27d812dd202c0378deb4b", "/updates/0004013820000202.cia") );
+}

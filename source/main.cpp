@@ -5,12 +5,17 @@
 #include <string>
 #include <algorithm>
 
+#include "Updates/UpdateInfo.h"
 #include "cfgutables.h"
 #include "libmd5-rfc/md5.h"
 #include "SuperUserLib3DS/libsu.h"
 #include "fs.h"
 #include "misc.h"
 #include "title.h"
+#include "Updates/UpdateInfoN3dsEur.h"
+#include "Updates/UpdateInfoN3dsUsa.h"
+#include "Updates/UpdateInfoO3dsUsa.h"
+#include "Updates/UpdateInfoO3dsEur.h"
 
 #ifndef CITRA
 #include "ctr_shell.h"
@@ -86,7 +91,6 @@ int checkMD5(const char *file, const char *md5) {
 
     FILE *fp = fopen(file, "rb");
     if (fp == NULL) {
-        printf("%s can't be opened.\n", file);
         return 1;
     }
 
@@ -100,8 +104,7 @@ int checkMD5(const char *file, const char *md5) {
     for (int i = 0; i < 16; i++) {
         sprintf(rmd5 + 2*i, "%02x", digest[i]);
     }
-    //printf("%s - %s\n", md5, rmd5);
-    return strcasecmp(md5, rmd5);
+    return strcmp(md5, rmd5);
 }
 
 int getAMu() {
@@ -149,7 +152,38 @@ void waitY() {
     }
 }
 
-void installUpdates(bool downgrade) {
+UpdateInfo *getUpdateInfo(int model, int region) {
+    switch(region) {
+        case 0: { // JPN
+            if(model == 2 || model == 4) { // n3DS
+                //TODO
+                break;
+            } else {
+                //TODO
+                break;
+            }
+        }
+        case 1: { // USA
+            if(model == 2 || model == 4) { // n3DS
+                return (UpdateInfo*)new UpdateInfoN3dsUsa();
+            } else {
+                return (UpdateInfo*)new UpdateInfoO3dsUsa();
+            }
+        }
+        case 2: { // EUR
+            if(model == 2 || model == 4) { // n3DS
+                return (UpdateInfo*)new UpdateInfoN3dsEur();
+            } else {
+                return (UpdateInfo*)new UpdateInfoO3dsEur();
+            }
+        }
+        default:
+            return NULL;
+    }
+    return NULL;
+}
+
+void installUpdatesFromFile(bool downgrade) {
 
     printf("Please wait...\n\n");
     std::vector<TitleInfo> installedTitles = getTitleInfos(MEDIATYPE_NAND);
@@ -311,19 +345,124 @@ void installUpdates(bool downgrade) {
     aptCloseSession();
 }
 
+void downgrade() {
+
+    printf("init -> ");
+    std::vector<TitleInfo> installedTitles = getTitleInfos(MEDIATYPE_NAND);
+    std::vector<TitleInstallInfo> titles;
+    TitleInstallInfo installInfo;
+    AM_TitleEntry ciaFileInfo;
+    fs::File f;
+    printf("\x1b[32mGOOD\x1b[0m\n");
+
+    // get system info
+    printf("check system -> ");
+    SysInfo *sysInfo = getSysInfo();
+    if (sysInfo == NULL) {
+        printf("\x1b[31mFAIL\x1b[0m\n");
+        printf("can't get system information...\n");
+        waitExitKey();
+    }
+    printf("\x1b[32mGOOD\x1b[0m\n");
+
+    printf("check update info -> ");
+    UpdateInfo *update = getUpdateInfo(sysInfo->model, sysInfo->region);
+    if(update == NULL) {
+        printf("\x1b[31mFAIL\x1b[0m\n");
+        printf("can't find update config for your system...\n");
+        waitExitKey();
+    }
+    printf("\x1b[32mGOOD\x1b[0m\n");
+
+    // check md5/add files
+    printf("\nChecking update integrity...\n\n");
+    for (std::vector<UpdateItem>::iterator it = update->items.begin() ; it != update->items.end(); ++it) {
+        printf("MD5: %s -> ", it->getPath().c_str());
+        if(checkMD5(it->getPath().c_str(), it->getMD5().c_str()) != 0) {
+            printf("\x1b[31mFAIL\x1b[0m\n");
+            waitExitKey();
+        }
+        printf("\x1b[32mGOOD\x1b[0m\n");
+
+        // add to titles list
+        char path[128]; strncpy(path, it->getPath().c_str(), 128); // fsMakePath doesn't like std::string ?!
+        FS_Path filePath = fsMakePath(PATH_ASCII, path);
+        f.open(filePath, FS_OPEN_READ);
+        if (AM_GetCiaFileInfo(MEDIATYPE_NAND, &ciaFileInfo, f.getFileHandle())) {
+            printf("can't get cia information (hax didn't succeed?)\n");
+            waitExitKey();
+        }
+        int cmpResult = versionCmp(installedTitles, ciaFileInfo.titleID, ciaFileInfo.version);
+        if (cmpResult != 0) {
+            strncpy(installInfo.path, path, 128);
+            installInfo.entry = ciaFileInfo;
+            installInfo.requiresDelete = cmpResult < 0;
+            titles.push_back(installInfo);
+        }
+    }
+
+    std::sort(titles.begin(), titles.end(), sortTitlesLowToHigh);
+
+    consoleClear();
+    printf("\ndevice: %s, update: %s -> \x1b[32mGOOD\x1b[0m\n\n", CFGU_MODEL_TABLE[(int) sysInfo->model], update->model.c_str());
+    printf("region: %s, update: %s -> \x1b[32mGOOD\x1b[0m\n\n", CFGU_REGION_TABLE[(int) sysInfo->region], update->region.c_str());
+    printf("downgrade to: \x1b[32m%s\x1b[0m\n", update->version.c_str());
+    printf("\n\x1b[32mSEEMS GOOD\x1b[0m\n\n");
+    printf("press (Y) to downgrade...\n");
+    printf("press (A) to cancel...\n");
+    waitY();
+    consoleClear();
+
+    for (auto it : titles) {
+        bool nativeFirm = it.entry.titleID == 0x0004013800000002LL || it.entry.titleID == 0x0004013820000002LL;
+        if (nativeFirm) {
+            printf("NATIVE_FIRM -> ");
+        } else {
+            printf("%s -> ", it.path);
+        }
+
+        if (it.requiresDelete) deleteTitle(MEDIATYPE_NAND, it.entry.titleID);
+        installCia(it.path, MEDIATYPE_NAND);
+        if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
+            printf("\x1b[31mFAIL ... trying again\x1b[0m\n");
+            if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
+                printf("\x1b[31mFAIL\x1b[0m\n");
+                printf("\x1b[31mYou should be able to use recovery to fix...\x1b[0m\n");
+                waitExitKey();
+            }
+        }
+        printf("\x1b[32mINSTALLED\x1b[0m\n");
+    }
+
+    if (sysInfo != NULL) {
+        free(sysInfo);
+    }
+    if (update != NULL) {
+        free(update);
+    }
+
+    printf("\n\nUpdates installed. Rebooting in 10 seconds...\n");
+    svcSleepThread(10000000000LL);
+    aptOpenSession();
+    APT_HardwareResetAsync();
+    aptCloseSession();
+}
+
 int main(int argc, char *argv[]) {
 #ifndef CITRA
     ctr_shell_init(NULL, 3333);
 #endif
     appInit();
+    osSetSpeedupEnable(false); // disable speedup for stability ?
 
     printf("executing memchunkhax2...\n");
     if(getAMu() != 0) {
         printf("can't get am:u service...\n");
         waitExitKey();
     }
+
     consoleClear();
-    installUpdates(true);
+    downgrade();
     waitExitKey();
 
 #ifndef CITRA

@@ -3,6 +3,7 @@ project(SafeSysUpdater)
 enable_language(ASM)
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
+set(APP_ICON res/icon.png)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${DKA_SUGGESTED_C_FLAGS} -DSFMT_MEXP=19937") # Use the devkitArm suggested flags. This is not mandatory.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++14 -DSFMT_MEXP=19937")
 

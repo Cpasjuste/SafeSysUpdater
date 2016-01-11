@@ -323,7 +323,7 @@ function(__add_ncch_banner target IMAGE SOUND)
     )
 endfunction()
 
-function(add_cia_target target RSF IMAGE SOUND )
+function(add_cia_target target RSF IMAGE SOUND)
     get_filename_component(target_we ${target} NAME_WE)
     if(${ARGC} GREATER 6)
         set(APP_TITLE ${ARGV4})
