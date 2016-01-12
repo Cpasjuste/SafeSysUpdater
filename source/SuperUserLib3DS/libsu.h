@@ -25,7 +25,7 @@
 */
 
 // Comment this in order to not show the exploit progress.
-#define SUDEBUG
+//#define SUDEBUG
 
 #ifdef __cplusplus
 extern "C" {
