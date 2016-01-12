@@ -138,7 +138,7 @@ u32 waitKeyYA() {
 UpdateInfo *getUpdateInfo(int model, int region) {
     switch (region) {
         case 0: // JPN
-            break;
+            return (UpdateInfo *) new UpdateInfoJpn(model);
         case 1: // USA
             return (UpdateInfo *) new UpdateInfoUsa(model);
         case 2: // EUR
