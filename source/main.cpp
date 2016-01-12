@@ -33,11 +33,8 @@ struct SysInfo {
     u8 region;
 };
 
-void appInit() {
+void gfxInit() {
     gfxInitDefault();
-    fsInit();
-    sdmcArchiveInit();
-    cfguInit();
     consoleInit(GFX_TOP, NULL);
 }
 
@@ -47,6 +44,7 @@ void appExit() {
     sdmcArchiveExit();
     fsExit();
     gfxExit();
+    hidExit();
     aptExit();
     srvExit();
 }
@@ -207,6 +205,7 @@ void downgrade() {
             }
         }
     }
+    std::sort(titles.begin(), titles.end(), sortTitlesLowToHigh);
 
     // give a way to cancel now ...
     consoleClear();
@@ -222,14 +221,14 @@ void downgrade() {
     }
     printf("press (Y) to downgrade...\n");
     printf("press (A) to cancel...\n");
-    if(waitKeyYA() == KEY_A) {
+    u32 key = waitKeyYA();
+    if(key == KEY_A) {
         appExit();
         exit(EXIT_FAILURE);
     }
     consoleClear();
 
     // downgrade !
-    std::sort(titles.begin(), titles.end(), sortTitlesLowToHigh);
     for (auto it : titles) {
         bool nativeFirm = it.entry.titleID == 0x0004013800000002LL || it.entry.titleID == 0x0004013820000002LL;
         if (nativeFirm) {
@@ -237,7 +236,6 @@ void downgrade() {
         } else {
             printf("%s -> ", it.path);
         }
-
         if (it.requiresDelete) deleteTitle(MEDIATYPE_NAND, it.entry.titleID);
         installCia(it.path, MEDIATYPE_NAND);
         if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
@@ -267,7 +265,7 @@ void downgrade() {
 
 int main(int argc, char *argv[]) {
 
-    appInit();
+    gfxInit();
 
     printf("\nSafeSysUpdater @ Cpasjuste\n");
     printf("\nSysUpdater @ profi200\n");
@@ -282,21 +280,26 @@ int main(int argc, char *argv[]) {
     if (!simulation) {
         gfxExit();
         if (getAMu() != 0) {
-            gfxInitDefault();
-            consoleInit(GFX_TOP, NULL);
+            gfxInit();
             printf("\x1b[31mFAIL\x1b[0m\n");
             printf("can't get am:u service ... try again :x\n");
             quit();
         }
-        gfxInitDefault();
-        consoleInit(GFX_TOP, NULL);
+        gfxInit();
         printf("\x1b[32mHAX SUCCESS !\x1b[0m\n");
     }
 
+    // late init
     srvInit();
     aptInit();
+    fsInit();
+    sdmcArchiveInit();
+    cfguInit();
+    hidInit();
     amInit();
+
     downgrade();
+
     quit();
 
     return 0;
