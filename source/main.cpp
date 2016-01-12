@@ -127,6 +127,7 @@ u32 waitKeyYA() {
         } else if (hidKeysDown() & KEY_A) {
             return KEY_A;
         }
+        svcSleepThread(10000);
         gfxFlushBuffers();
         gfxSwapBuffers();
         gspWaitForVBlank();
@@ -256,16 +257,48 @@ void downgrade() {
         free(update);
     }
 
-    printf("\n\nUpdates installed. Rebooting in 10 seconds...\n");
+    printf("\n\nDowngrade completed. Rebooting in 10 seconds...\n");
     svcSleepThread(10000000000LL);
+    printf("\n\nTrying to reboot now...\n");
+    while(aptInit()!=0) {};
     aptOpenSession();
-    APT_HardwareResetAsync();
+    while(APT_HardwareResetAsync()!=0) {};
     aptCloseSession();
+}
+
+int checkDns() {
+
+    Result res = 0;
+    u32 statuscode = 0;
+    httpcContext context;
+
+    httpcInit();
+
+    res = httpcOpenContext(&context, "http://nus.cdn.c.shop.nintendowifi.net", 0);
+    if (R_FAILED(res)) return 1;
+
+    res = httpcBeginRequest(&context);
+    if (R_FAILED(res)) return 1;
+
+    res = httpcGetResponseStatusCode(&context, &statuscode, 0);
+    if (R_FAILED(res)) return 1;
+
+    httpcExit();
+    return 0;
 }
 
 int main(int argc, char *argv[]) {
 
     gfxInit();
+    /*
+    printf("checking dns -> ");
+    if(checkDns() != 0) {
+        printf("\x1b[31mFAIL\x1b[0m\n");
+        quit();
+    }
+    printf("\x1b[32mGOOD\x1b[0m\n");
+    quit();
+    */
 
     printf("\nSafeSysUpdater @ Cpasjuste\n");
     printf("\nSysUpdater @ profi200\n");
@@ -291,7 +324,6 @@ int main(int argc, char *argv[]) {
 
     // late init
     srvInit();
-    aptInit();
     fsInit();
     sdmcArchiveInit();
     cfguInit();
@@ -299,8 +331,6 @@ int main(int argc, char *argv[]) {
     amInit();
 
     downgrade();
-
-    quit();
 
     return 0;
 }
