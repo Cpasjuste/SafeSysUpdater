@@ -34,8 +34,6 @@ struct SysInfo {
 };
 
 void appInit() {
-    srvInit();
-    aptInit();
     gfxInitDefault();
     fsInit();
     sdmcArchiveInit();
@@ -295,6 +293,8 @@ int main(int argc, char *argv[]) {
         printf("\x1b[32mHAX SUCCESS !\x1b[0m\n");
     }
 
+    srvInit();
+    aptInit();
     amInit();
     downgrade();
     quit();
