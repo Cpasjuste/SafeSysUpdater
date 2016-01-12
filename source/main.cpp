@@ -127,7 +127,6 @@ u32 waitKeyYA() {
         } else if (hidKeysDown() & KEY_A) {
             return KEY_A;
         }
-        svcSleepThread(10000);
         gfxFlushBuffers();
         gfxSwapBuffers();
         gspWaitForVBlank();
@@ -197,6 +196,7 @@ void downgrade() {
                 printf("can't get cia information (hax didn't succeed?)\n");
                 quit();
             }
+            f.close();
             int cmpResult = versionCmp(installedTitles, ciaFileInfo.titleID, ciaFileInfo.version);
             if (cmpResult != 0) {
                 strncpy(installInfo.path, path, 128);
@@ -206,6 +206,7 @@ void downgrade() {
             }
         }
     }
+    update->items.clear();
     std::sort(titles.begin(), titles.end(), sortTitlesLowToHigh);
 
     // give a way to cancel now ...
@@ -215,11 +216,13 @@ void downgrade() {
     printf("region: %s, update: %s -> \x1b[32mGOOD\x1b[0m\n\n", CFGU_REGION_TABLE[(int) sysInfo->region],
            update->region.c_str());
     printf("downgrade to: \x1b[32m%s\x1b[0m\n", update->version.c_str());
-    printf("\n\x1b[32mSEEMS GOOD\x1b[0m\n\n");
+    printf("\n\x1b[32mSEEMS GOOD -> \x1b[0m");
     if (simulation) {
-        printf("\x1b[32m-> UPDATE FILES ARE GOOD <-\x1b[0m\n\n");
+        printf("\n\n\x1b[32m-> UPDATE FILES ARE GOOD <-\x1b[0m\n\n");
         quit();
     }
+
+    /* TODO: this does freeze the device sometime ?!
     printf("press (Y) to downgrade...\n");
     printf("press (A) to cancel...\n");
     u32 key = waitKeyYA();
@@ -228,6 +231,9 @@ void downgrade() {
         exit(EXIT_FAILURE);
     }
     consoleClear();
+    */
+
+    printf("\x1b[31mDOWNGRADING !!\x1b[0m\n\n");
 
     // downgrade !
     for (auto it : titles) {
@@ -257,9 +263,10 @@ void downgrade() {
         free(update);
     }
 
-    printf("\n\nDowngrade completed. Rebooting in 10 seconds...\n");
+    printf("\n\nDowngrade completed. Trying to reboot in 10 sec...\n");
+    printf("PowerOff your device if it doesn't...\n");
     svcSleepThread(10000000000LL);
-    printf("\n\nTrying to reboot now...\n");
+    printf("Trying to reboot...\n");
     while(aptInit()!=0) {};
     aptOpenSession();
     while(APT_HardwareResetAsync()!=0) {};
@@ -290,15 +297,6 @@ int checkDns() {
 int main(int argc, char *argv[]) {
 
     gfxInit();
-    /*
-    printf("checking dns -> ");
-    if(checkDns() != 0) {
-        printf("\x1b[31mFAIL\x1b[0m\n");
-        quit();
-    }
-    printf("\x1b[32mGOOD\x1b[0m\n");
-    quit();
-    */
 
     printf("\nSafeSysUpdater @ Cpasjuste\n");
     printf("\nSysUpdater @ profi200\n");
