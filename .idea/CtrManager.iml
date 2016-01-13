@@ -10,6 +10,15 @@
       <sourceFolder url="file://$MODULE_DIR$/source/SuperUserLib3DS/README.md" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/SuperUserLib3DS/libsu.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/SuperUserLib3DS/libsu.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Updates/UpdateInfo.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Updates/UpdateInfoEur.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Updates/UpdateInfoEur.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Updates/UpdateInfoJpn.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Updates/UpdateInfoJpn.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Updates/UpdateInfoUsa.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Updates/UpdateInfoUsa.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Updates/UpdateItem.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Updates/UpdateItem.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/cfgutables.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/libmd5-rfc/md5.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/libmd5-rfc/md5.h" isTestSource="false" />

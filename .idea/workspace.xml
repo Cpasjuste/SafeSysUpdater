@@ -3,9 +3,10 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
     <generated>
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater_3dsx" />
-      <config projectName="CtrManager" targetName="citra" />
-      <config projectName="hello_world" targetName="hello_world_3dsx" />
       <config projectName="CtrManager" targetName="CtrManager" />
+      <config projectName="CtrManager" targetName="CtrManager_3dslink" />
+      <config projectName="hello_world" targetName="hello_world_3dsx" />
+      <config projectName="CtrManager" targetName="citra" />
       <config projectName="CtrManager" targetName="CtrManager_3dsx" />
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater_Citra" />
       <config projectName="CtrManager" targetName="CtrManager-Citra" />
@@ -14,10 +15,9 @@
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater_Cia" />
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater_3dslink" />
       <config projectName="hello_world" targetName="hello_world" />
-      <config projectName="CtrManager" targetName="CtrManager_Citra" />
       <config projectName="CtrManager" targetName="CtrManager_" />
       <config projectName="SafeSysUpdater" targetName="CtrManager" />
-      <config projectName="CtrManager" targetName="CtrManager_3dslink" />
+      <config projectName="CtrManager" targetName="CtrManager_Citra" />
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater" />
     </generated>
   </component>
@@ -30,9 +30,14 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7b1d6c8-225f-4477-a1b7-b64c7977a4f5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/main.cpp" afterPath="$PROJECT_DIR$/source/main.cpp" />
+    <list default="true" id="f7b1d6c8-225f-4477-a1b7-b64c7977a4f5" name="Default" comment="- remove config files (included in source code)">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/CtrManager.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/Updates/UpdateInfoJpn.cpp" afterPath="$PROJECT_DIR$/source/Updates/UpdateInfoJpn.cpp" />
     </list>
     <ignored path="CtrManager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,27 +58,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.7426357">
-              <caret line="292" column="65" selection-start-line="292" selection-start-column="65" selection-end-line="292" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="195" column="76" selection-start-line="195" selection-start-column="76" selection-end-line="195" selection-end-column="76" />
               <folding>
-                <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#269#291#0" expanded="true" />
-                <element signature="e#9102#9129#0" expanded="true" />
-                <element signature="e#9380#9397#0" expanded="true" />
+                <element signature="e#6177#6438#0" expanded="false" />
+                <marker date="1452638238735" expanded="true" signature="9:390" placeholder="..." />
+                <marker date="1452638238735" expanded="true" signature="433:506" placeholder="{...}" />
+                <marker date="1452638238735" expanded="false" signature="757:789" placeholder="{...}" />
+                <marker date="1452638238735" expanded="true" signature="807:864" placeholder="{...}" />
+                <marker date="1452638238735" expanded="false" signature="881:1011" placeholder="{...}" />
+                <marker date="1452638238735" expanded="false" signature="1035:1306" placeholder="{...}" />
+                <marker date="1452638238735" expanded="false" signature="1356:1872" placeholder="{...}" />
+                <marker date="1452638238735" expanded="false" signature="1887:2319" placeholder="{...}" />
+                <marker date="1452638238735" expanded="false" signature="2332:2595" placeholder="{...}" />
+                <marker date="1452638238735" expanded="false" signature="2613:2898" placeholder="{...}" />
+                <marker date="1452638238735" expanded="true" signature="2949:3288" placeholder="{...}" />
+                <marker date="1452638238735" expanded="true" signature="3307:7760" placeholder="{...}" />
+                <marker date="1452638238735" expanded="true" signature="7777:8189" placeholder="{...}" />
+                <marker date="1452638238735" expanded="true" signature="8224:9020" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cfgutables.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/cfgutables.h">
+      <file leaf-file-name="UpdateInfoEur.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfoEur.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
+              <caret line="229" column="82" selection-start-line="229" selection-start-column="69" selection-end-line="229" selection-end-column="82" />
+              <folding>
+                <marker date="1452592240944" expanded="true" signature="117:25161" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateInfoUsa.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfoUsa.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+              <folding>
+                <marker date="1452592462989" expanded="true" signature="117:24729" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateInfoJpn.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfoJpn.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.66">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding>
+                <marker date="1452672508662" expanded="true" signature="117:24057" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,21 +124,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <push-targets>
+      <push-target-info repo="$PROJECT_DIR$/source/memchunkhax2" source="master" target-remote="origin" target-branch="master" />
+    </push-targets>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cmake/FindKAIRY.cmake" />
-        <option value="$PROJECT_DIR$/source/FileIo.h" />
-        <option value="$PROJECT_DIR$/source/FileIo.cpp" />
-        <option value="$PROJECT_DIR$/../Kairy/include/Kairy/System/FileIo.h" />
-        <option value="$PROJECT_DIR$/../Kairy/source/Kairy/System/FileIo.cpp" />
-        <option value="$PROJECT_DIR$/cmake/FindLIBCTRSHELL.cmake" />
-        <option value="$PROJECT_DIR$/source/icon.hpp" />
-        <option value="$PROJECT_DIR$/source/utility.hpp" />
-        <option value="$PROJECT_DIR$/source/messageBox.h" />
-        <option value="$PROJECT_DIR$/source/messageBox.cpp" />
-        <option value="$PROJECT_DIR$/../libctrshell/libctrshell/Makefile" />
         <option value="$PROJECT_DIR$/source/icon.cpp" />
         <option value="$PROJECT_DIR$/source/cursor.hpp" />
         <option value="$PROJECT_DIR$/source/cursor.cpp" />
@@ -107,13 +141,47 @@
         <option value="$PROJECT_DIR$/source/citrus/app.hpp" />
         <option value="$PROJECT_DIR$/source/sysUpdater/source/main.cpp" />
         <option value="$PROJECT_DIR$/updates.cfg" />
-        <option value="$PROJECT_DIR$/cmake/Tools3DS.cmake" />
         <option value="$PROJECT_DIR$/res/app.rsf" />
         <option value="$PROJECT_DIR$/source/sysUpdater/include/title.h" />
         <option value="$PROJECT_DIR$/source/sysUpdater/source/title.cpp" />
         <option value="$PROJECT_DIR$/source/cfgutables.h" />
+        <option value="$PROJECT_DIR$/source/updateInfo.h" />
+        <option value="$PROJECT_DIR$/source/UpdateItem.h" />
+        <option value="$PROJECT_DIR$/source/UpdateItem.cpp" />
+        <option value="$PROJECT_DIR$/source/UpdateInfo.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateItem.cpp" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfo.h" />
+        <option value="$PROJECT_DIR$/source/Updates/Update.cpp" />
+        <option value="$PROJECT_DIR$/source/Updates/Update.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoO3dsEur.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoO3dsUsa.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateItem.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoO3dsEur.cpp" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoO3dsUsa.cpp" />
+        <option value="$PROJECT_DIR$/cmake/Tools3DS.cmake" />
+        <option value="$PROJECT_DIR$/source/font.h" />
+        <option value="$PROJECT_DIR$/source/font.c" />
+        <option value="$PROJECT_DIR$/source/SuperUserLib3DS/libsu.h" />
+        <option value="$PROJECT_DIR$/source/SuperUserLib3DS/libsu.c" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoN3dsJap.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoN3dsJpn.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoN3dsJpn.cpp" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoO3dsJpn.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoO3dsJpn.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoN3dsEur.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoN3dsEur.cpp" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoEur.cpp" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoN3dsUsa.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoN3dsUsa.cpp" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoUsa.cpp" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoUsa.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoEur.h" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoJpn.h" />
         <option value="$PROJECT_DIR$/source/main.cpp" />
+        <option value="$PROJECT_DIR$/source/sysUpdater/include/fs.h" />
+        <option value="$PROJECT_DIR$/source/sysUpdater/source/fs.cpp" />
+        <option value="$PROJECT_DIR$/source/Updates/UpdateInfoJpn.cpp" />
       </list>
     </option>
   </component>
@@ -123,10 +191,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="74" />
-    <option name="y" value="47" />
-    <option name="width" value="1386" />
-    <option name="height" value="921" />
+    <option name="x" value="53" />
+    <option name="y" value="-4" />
+    <option name="width" value="1867" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -135,7 +203,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -195,7 +263,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cfg" />
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Updates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -204,7 +276,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../libctrshell/libctrshell/Makefile" />
@@ -215,11 +287,14 @@
     <property name="js.buildTools.gulp.gulp_package_dir" value="" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source/Updates" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/cmake" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SafeSysUpdater_3dsx">
+  <component name="RunManager" selected="Application.SafeSysUpdater_Cia">
     <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="CtrManager" TARGET_NAME="CtrManager" CONFIG_NAME="Debug" TEST_MODE="SUITE_TEST">
       <envs />
       <method />
@@ -313,19 +388,80 @@
       <option name="number" value="Default" />
       <updated>1445951282667</updated>
     </task>
+    <task id="LOCAL-00001" summary="- little cleanup">
+      <created>1452398487981</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1452398487981</updated>
+    </task>
+    <task id="LOCAL-00002" summary="- remove config files (included in source code)">
+      <created>1452509511878</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1452509511878</updated>
+    </task>
+    <task id="LOCAL-00003" summary="- Add simulation mode to check your update files without actually downgrading">
+      <created>1452524117568</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1452524117568</updated>
+    </task>
+    <task id="LOCAL-00004" summary="- fix memchunkhax commit">
+      <created>1452524231214</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1452524231214</updated>
+    </task>
+    <task id="LOCAL-00005" summary="- big improvement in hax success rate&#10;- some cleanup">
+      <created>1452595878291</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1452595878291</updated>
+    </task>
+    <task id="LOCAL-00006" summary="- minor hax fix">
+      <created>1452599975028</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1452599975028</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- added japan support">
+      <created>1452601536936</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1452601536936</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- minor input fix">
+      <created>1452604491061</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1452604491061</updated>
+    </task>
+    <task id="LOCAL-00009" summary="- try to fix input freeze..">
+      <created>1452627320773</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1452627320773</updated>
+    </task>
+    <task id="LOCAL-00010" summary="- remove second downgrade confirmation screen">
+      <created>1452640801948</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1452640801948</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="74" y="47" width="1386" height="921" extended-state="0" />
+    <frame x="53" y="-4" width="1867" height="1084" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26118326" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16604178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2979243" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21733822" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35845214" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21690428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13797314" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10183299" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -335,7 +471,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892057" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -351,77 +487,95 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/source/CakeBrah" />
     </ignored-roots>
+    <MESSAGE value="- little cleanup" />
+    <MESSAGE value="- remove config files (included in source code)" />
+    <MESSAGE value="- Add simulation mode to check your update files without actually downgrading" />
+    <MESSAGE value="- fix memchunkhax commit" />
+    <MESSAGE value="- big improvement in hax success rate&#10;- some cleanup" />
+    <MESSAGE value="- minor hax fix" />
+    <MESSAGE value="- added japan support" />
+    <MESSAGE value="- minor input fix" />
+    <MESSAGE value="- try to fix input freeze.." />
+    <MESSAGE value="- remove second downgrade confirmation screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="- remove second downgrade confirmation screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DevkitArm3DS.cmake">
+    <entry file="file:///opt/devkitpro/libctru/include/3ds/services/apt.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="185" column="7" selection-start-line="185" selection-start-column="7" selection-end-line="185" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#6177#6438#0" expanded="false" />
+            <marker date="1452638238735" expanded="true" signature="9:390" placeholder="..." />
+            <marker date="1452638238735" expanded="true" signature="433:506" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="757:789" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="807:864" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="881:1011" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="1035:1306" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="1356:1872" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="1887:2319" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="2332:2595" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="2613:2898" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="2949:3288" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="3307:7760" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="7777:8189" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="8224:9020" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake/Tools3DS.cmake">
+    <entry file="file://$PROJECT_DIR$/source/sysUpdater/source/zip/unzip.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <caret line="792" column="30" selection-start-line="792" selection-start-column="23" selection-end-line="792" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/bin/cmake/share/cmake-3.3/Modules/FindPackageHandleStandardArgs.cmake">
+    <entry file="file://$PROJECT_DIR$/source/sysUpdater/source/fs.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <caret line="749" column="27" selection-start-line="749" selection-start-column="27" selection-end-line="749" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DevkitArm3DS.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake/Tools3DS.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/bin/cmake/share/cmake-3.3/Modules/FindPackageHandleStandardArgs.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake/bin2s_header.h.in">
+    <entry file="file://$PROJECT_DIR$/source/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake/FindLIBKAIRY.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake/FindCTRULIB.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.020547945">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="39" />
+          <folding>
+            <element signature="e#6177#6438#0" expanded="false" />
+            <marker date="1452638238735" expanded="true" signature="9:390" placeholder="..." />
+            <marker date="1452638238735" expanded="true" signature="433:506" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="757:789" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="807:864" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="881:1011" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="1035:1306" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="1356:1872" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="1887:2319" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="2332:2595" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="2613:2898" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="2949:3288" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="3307:7760" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="7777:8189" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="8224:9020" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -548,15 +702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5765766">
           <caret line="184" column="4" selection-start-line="184" selection-start-column="4" selection-end-line="184" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/SuperUserLib3DS/libsu.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7893738">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -564,33 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.4003795">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/sysUpdater/include/fs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="17" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="17" />
-          <folding>
-            <element signature="e#783#803#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake/Tools3DS.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.9032258">
-          <caret line="349" column="20" selection-start-line="349" selection-start-column="20" selection-end-line="349" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/app.rsf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8387097">
-          <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -598,15 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/sysUpdater/source/fs.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.0">
-          <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -614,15 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.1833334">
           <caret line="94" column="56" selection-start-line="94" selection-start-column="56" selection-end-line="94" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/sysUpdater/source/title.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31666666">
-          <caret line="117" column="22" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -630,61 +730,204 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.612904">
           <caret line="194" column="38" selection-start-line="189" selection-start-column="20" selection-end-line="194" selection-end-column="38" />
-          <folding>
-            <element signature="e#751#771#0" expanded="false" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/Updates/UpdateItem.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="53" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/Updates/UpdateItem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfo.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/sysUpdater/source/title.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="48" selection-start-line="103" selection-start-column="48" selection-end-line="103" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DevkitArm3DS.cmake">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.7">
           <caret line="58" column="27" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="27" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/app.rsf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57272726">
+          <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake/Tools3DS.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03169014">
+          <caret line="325" column="46" selection-start-line="325" selection-start-column="46" selection-end-line="325" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/devkitpro/libctru/include/3ds/srv.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47887325">
+          <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/devkitpro/libctru/include/3ds/services/hid.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="3" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/SuperUserLib3DS/libsu.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.322581">
+          <caret line="84" column="14" selection-start-line="84" selection-start-column="10" selection-end-line="84" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/SuperUserLib3DS/libsu.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3478261">
+          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5813953">
-          <caret line="26" column="75" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
-          <folding />
+        <state vertical-scroll-proportion="0.89855075">
+          <caret line="31" column="72" selection-start-line="31" selection-start-column="72" selection-end-line="31" selection-end-column="72" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/n3DS_USA.cfg">
+    <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfoEur.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="17" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-          <folding />
+        <state vertical-scroll-proportion="0.46376812">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/n3DS_EUR.cfg">
+    <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfoJpn.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11594203">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/sysUpdater/source/zip/unzip.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <caret line="792" column="30" selection-start-line="792" selection-start-column="23" selection-end-line="792" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/devkitpro/libctru/include/3ds/services/apt.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="185" column="7" selection-start-line="185" selection-start-column="7" selection-end-line="185" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/cfgutables.h">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4408163">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfoUsa.h">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/sysUpdater/include/fs.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23239437">
+          <caret line="83" column="12" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfoEur.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="229" column="82" selection-start-line="229" selection-start-column="69" selection-end-line="229" selection-end-column="82" />
+          <folding>
+            <marker date="1452592240944" expanded="true" signature="117:25161" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfoUsa.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+          <folding>
+            <marker date="1452592462989" expanded="true" signature="117:24729" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/sysUpdater/source/fs.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24765258">
+          <caret line="76" column="8" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.7426357">
-          <caret line="292" column="65" selection-start-line="292" selection-start-column="65" selection-end-line="292" selection-end-column="65" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="195" column="76" selection-start-line="195" selection-start-column="76" selection-end-line="195" selection-end-column="76" />
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#269#291#0" expanded="true" />
-            <element signature="e#9102#9129#0" expanded="true" />
-            <element signature="e#9380#9397#0" expanded="true" />
+            <element signature="e#6177#6438#0" expanded="false" />
+            <marker date="1452638238735" expanded="true" signature="9:390" placeholder="..." />
+            <marker date="1452638238735" expanded="true" signature="433:506" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="757:789" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="807:864" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="881:1011" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="1035:1306" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="1356:1872" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="1887:2319" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="2332:2595" placeholder="{...}" />
+            <marker date="1452638238735" expanded="false" signature="2613:2898" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="2949:3288" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="3307:7760" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="7777:8189" placeholder="{...}" />
+            <marker date="1452638238735" expanded="true" signature="8224:9020" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/Updates/UpdateInfoJpn.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.66">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <marker date="1452672508662" expanded="true" signature="117:24057" placeholder="{...}" />
           </folding>
         </state>
       </provider>
