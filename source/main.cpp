@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <string>
 #include <algorithm>
+#include <malloc.h>
 
 #include "fs.h"
 #include "misc.h"
@@ -16,7 +17,7 @@
 #include "Updates/UpdateInfoUsa.h"
 #include "Updates/UpdateInfoJpn.h"
 
-bool simulation = false;
+bool checkOnly = false;
 
 typedef struct {
     char path[128];
@@ -119,18 +120,19 @@ int quit() {
     exit(EXIT_FAILURE);
 }
 
-u32 waitKeyYA() {
+bool isPressedY() {
     while (aptMainLoop()) {
         hidScanInput();
         if (hidKeysDown() & KEY_Y) {
-            return KEY_Y;
+            return true;
         } else if (hidKeysDown() & KEY_A) {
-            return KEY_A;
+            return false;
         }
         gfxFlushBuffers();
         gfxSwapBuffers();
         gspWaitForVBlank();
     }
+    return false;
 }
 
 UpdateInfo *getUpdateInfo(int model, int region) {
@@ -150,11 +152,11 @@ UpdateInfo *getUpdateInfo(int model, int region) {
 void downgrade() {
 
     printf("\ninit -> ");
-    std::vector<TitleInfo> installedTitles = getTitleInfos(MEDIATYPE_NAND);
     std::vector<TitleInstallInfo> titles;
     TitleInstallInfo installInfo;
     AM_TitleEntry ciaFileInfo;
     fs::File f;
+    std::vector<TitleInfo> installedTitles = getTitleInfos(MEDIATYPE_NAND);
     printf("\x1b[32mGOOD\x1b[0m\n");
 
     // get system info
@@ -187,7 +189,7 @@ void downgrade() {
         }
         printf("\x1b[32mGOOD\x1b[0m\n");
 
-        if (!simulation) {
+        if (!checkOnly) {
             char path[128];
             strncpy(path, it->getPath().c_str(), 128); // fsMakePath doesn't like std::string ?!
             FS_Path filePath = fsMakePath(PATH_ASCII, path);
@@ -209,7 +211,6 @@ void downgrade() {
     update->items.clear();
     std::sort(titles.begin(), titles.end(), sortTitlesLowToHigh);
 
-    // give a way to cancel now ...
     consoleClear();
     printf("\ndevice: %s, update: %s -> \x1b[32mGOOD\x1b[0m\n\n", CFGU_MODEL_TABLE[(int) sysInfo->model],
            update->model.c_str());
@@ -217,25 +218,13 @@ void downgrade() {
            update->region.c_str());
     printf("downgrade to: \x1b[32m%s\x1b[0m\n", update->version.c_str());
     printf("\n\x1b[32mSEEMS GOOD -> \x1b[0m");
-    if (simulation) {
+    if (checkOnly) {
         printf("\n\n\x1b[32m-> UPDATE FILES ARE GOOD <-\x1b[0m\n\n");
         quit();
     }
 
-    /* TODO: this does freeze the device sometime ?!
-    printf("press (Y) to downgrade...\n");
-    printf("press (A) to cancel...\n");
-    u32 key = waitKeyYA();
-    if(key == KEY_A) {
-        appExit();
-        exit(EXIT_FAILURE);
-    }
-    consoleClear();
-    */
-
-    printf("\x1b[31mDOWNGRADING !!\x1b[0m\n\n");
-
     // downgrade !
+    printf("\x1b[31mDOWNGRADING !!\x1b[0m\n\n");
     for (auto it : titles) {
         bool nativeFirm = it.entry.titleID == 0x0004013800000002LL || it.entry.titleID == 0x0004013820000002LL;
         if (nativeFirm) {
@@ -247,7 +236,7 @@ void downgrade() {
         installCia(it.path, MEDIATYPE_NAND);
         if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
             printf("\x1b[31mFAIL ... trying again\x1b[0m\n");
-            if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
+            if (AM_InstallFirm(it.entry.titleID)) {
                 printf("\x1b[31mFAIL\x1b[0m\n");
                 printf("\x1b[31mYou should be able to use recovery to fix...\x1b[0m\n");
                 quit();
@@ -255,13 +244,8 @@ void downgrade() {
         }
         printf("\x1b[32mINSTALLED\x1b[0m\n");
     }
-
-    if (sysInfo != NULL) {
-        free(sysInfo);
-    }
-    if (update != NULL) {
-        free(update);
-    }
+    free(sysInfo);
+    free(update);
 
     printf("\n\nDowngrade completed. Trying to reboot in 10 sec...\n");
     printf("PowerOff your device if it doesn't...\n");
@@ -271,27 +255,6 @@ void downgrade() {
     aptOpenSession();
     while(APT_HardwareResetAsync()!=0) {};
     aptCloseSession();
-}
-
-int checkDns() {
-
-    Result res = 0;
-    u32 statuscode = 0;
-    httpcContext context;
-
-    httpcInit();
-
-    res = httpcOpenContext(&context, "http://nus.cdn.c.shop.nintendowifi.net", 0);
-    if (R_FAILED(res)) return 1;
-
-    res = httpcBeginRequest(&context);
-    if (R_FAILED(res)) return 1;
-
-    res = httpcGetResponseStatusCode(&context, &statuscode, 0);
-    if (R_FAILED(res)) return 1;
-
-    httpcExit();
-    return 0;
 }
 
 int main(int argc, char *argv[]) {
@@ -304,11 +267,10 @@ int main(int argc, char *argv[]) {
 
     printf("press (Y) to downgrade...\n");
     printf("press (A) to check update files...\n");
-    u32 key = waitKeyYA();
-    if (key == KEY_A) simulation = true;
+    checkOnly = !isPressedY();
     consoleClear();
 
-    if (!simulation) {
+    if (!checkOnly) {
         gfxExit();
         if (getAMu() != 0) {
             gfxInit();
