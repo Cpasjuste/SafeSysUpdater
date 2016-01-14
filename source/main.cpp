@@ -164,7 +164,7 @@ void downgrade() {
     SysInfo *sysInfo = getSysInfo();
     if (sysInfo == NULL) {
         printf("\x1b[31mFAIL\x1b[0m\n");
-        printf("can't get system information...\n");
+        printf("Can't get system information...\n");
         quit();
     }
     printf("\x1b[32mGOOD\x1b[0m\n");
@@ -174,7 +174,7 @@ void downgrade() {
     UpdateInfo *update = getUpdateInfo(sysInfo->model, sysInfo->region);
     if (update == NULL) {
         printf("\x1b[31mFAIL\x1b[0m\n");
-        printf("can't find update config for your system...\n");
+        printf("Can't find update config for your system...\n");
         quit();
     }
     printf("\x1b[32mGOOD\x1b[0m\n");
@@ -195,7 +195,7 @@ void downgrade() {
             FS_Path filePath = fsMakePath(PATH_ASCII, path);
             f.open(filePath, FS_OPEN_READ);
             if (AM_GetCiaFileInfo(MEDIATYPE_NAND, &ciaFileInfo, f.getFileHandle())) {
-                printf("can't get cia information (hax didn't succeed?)\n");
+                printf("Can't get cia information (hax didn't succeed?)\n");
                 quit();
             }
             f.close();
@@ -237,8 +237,7 @@ void downgrade() {
         if (nativeFirm && AM_InstallFirm(it.entry.titleID)) {
             printf("\x1b[31mFAIL ... trying again\x1b[0m\n");
             if (AM_InstallFirm(it.entry.titleID)) {
-                printf("\x1b[31mFAIL\x1b[0m\n");
-                printf("\x1b[31mYou should be able to use recovery to fix...\x1b[0m\n");
+                printf("\x1b[31mFAIL.\nYOU MAY BE BRICKED.\nPOWER OFF YOUR DEVICE AND HOLD L + R + A + DPAD UP + POWER TO BOOT RECOVERY AND TRY A UPDATE.\x1b[0m\n");
                 quit();
             }
         }
@@ -247,8 +246,7 @@ void downgrade() {
     free(sysInfo);
     free(update);
 
-    printf("\n\nDowngrade completed. Trying to reboot in 10 sec...\n");
-    printf("PowerOff your device if it doesn't...\n");
+    printf("\n\nDowngrade completed. Trying to reboot in 10 sec...\nPower off your device manually if it doesn't...\n");
     svcSleepThread(10000000000LL);
     printf("Trying to reboot...\n");
     while(aptInit()!=0) {};
@@ -260,13 +258,7 @@ void downgrade() {
 int main(int argc, char *argv[]) {
 
     gfxInit();
-
-    printf("\nSafeSysUpdater @ Cpasjuste\n");
-    printf("\nSysUpdater @ profi200\n");
-    printf("\nmemchunkhax2 @ Steveice10\n\n");
-
-    printf("press (Y) to downgrade...\n");
-    printf("press (A) to check update files...\n");
+    printf("\nSafeSysUpdater @ Cpasjuste\n\nSysUpdater @ profi200\n\nmemchunkhax2 @ Steveice10\n\nPress (Y) to downgrade...\nPress (A) to check update files (recommended)...\n");
     checkOnly = !isPressedY();
     consoleClear();
 
@@ -274,8 +266,7 @@ int main(int argc, char *argv[]) {
         gfxExit();
         if (getAMu() != 0) {
             gfxInit();
-            printf("\x1b[31mFAIL\x1b[0m\n");
-            printf("can't get am:u service ... try again :x\n");
+            printf("\x1b[31mFAIL\x1b[0m\nCan't get am:u service... Try again :x\n");
             quit();
         }
         gfxInit();
