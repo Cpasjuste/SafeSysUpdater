@@ -3,9 +3,10 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
     <generated>
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater_3dsx" />
-      <config projectName="CtrManager" targetName="citra" />
-      <config projectName="hello_world" targetName="hello_world_3dsx" />
       <config projectName="CtrManager" targetName="CtrManager" />
+      <config projectName="CtrManager" targetName="CtrManager_3dslink" />
+      <config projectName="hello_world" targetName="hello_world_3dsx" />
+      <config projectName="CtrManager" targetName="citra" />
       <config projectName="CtrManager" targetName="CtrManager_3dsx" />
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater_Citra" />
       <config projectName="CtrManager" targetName="CtrManager-Citra" />
@@ -14,10 +15,9 @@
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater_Cia" />
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater_3dslink" />
       <config projectName="hello_world" targetName="hello_world" />
-      <config projectName="CtrManager" targetName="CtrManager_Citra" />
       <config projectName="CtrManager" targetName="CtrManager_" />
       <config projectName="SafeSysUpdater" targetName="CtrManager" />
-      <config projectName="CtrManager" targetName="CtrManager_3dslink" />
+      <config projectName="CtrManager" targetName="CtrManager_Citra" />
       <config projectName="SafeSysUpdater" targetName="SafeSysUpdater" />
     </generated>
   </component>
@@ -31,57 +31,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7b1d6c8-225f-4477-a1b7-b64c7977a4f5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/Debug.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/Debug.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/Main.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/TitleInfo.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/Utility.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/Utility.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/CtrManager.iml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake/FindLIBCTRSHELL.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake/FindLIBKAIRY.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake/FindSF2D.cmake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake/bin2s_header.h.in" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/bg_bottom.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/bg_bottom.xcf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/cursor.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/cursor.xcf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/font.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/ic_bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/ic_bg.xcf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/ic_default.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/ic_nand.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/ic_sd.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/mBoxBg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/mBoxBg.xcf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/mBoxNo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/theme/mBoxYes.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/main.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/_Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/include/error.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/include/fs.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/include/misc.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/include/title.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/include/zip/crypt.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/include/zip/ioapi.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/include/zip/unzip.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/include/zip/zip.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/source/fs.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/source/main.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/source/misc.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/source/title.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/source/zip/ioapi.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/source/zip/unzip.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/sysUpdater/source/zip/zip.cpp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/SuperUserLib3DS/libsu.c" afterPath="$PROJECT_DIR$/source/SuperUserLib3DS/libsu.c" />
     </list>
     <ignored path="CtrManager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,7 +61,7 @@
       <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5282609">
+            <state vertical-scroll-proportion="1.0565218">
               <caret line="117" column="57" selection-start-line="117" selection-start-column="57" selection-end-line="117" selection-end-column="57" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
@@ -485,7 +441,13 @@
       <option name="project" value="LOCAL" />
       <updated>1452718732758</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="- big refractor&#10;- only md5 check downgraded files">
+      <created>1452961474906</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1452961474906</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -494,6 +456,7 @@
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13754046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19622245" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21690428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -501,7 +464,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19622245" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -540,7 +502,8 @@
     <MESSAGE value="- remove second downgrade confirmation screen" />
     <MESSAGE value="- fix JPN updates filepath.." />
     <MESSAGE value="- cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="- cleanup" />
+    <MESSAGE value="- big refractor&#10;- only md5 check downgraded files" />
+    <option name="LAST_COMMIT_MESSAGE" value="- big refractor&#10;- only md5 check downgraded files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -874,6 +837,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2420168">
           <caret line="90" column="36" selection-start-line="90" selection-start-column="36" selection-end-line="90" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -937,7 +901,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5282609">
+        <state vertical-scroll-proportion="1.0565218">
           <caret line="117" column="57" selection-start-line="117" selection-start-column="57" selection-end-line="117" selection-end-column="57" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
