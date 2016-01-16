@@ -80,7 +80,7 @@ static void unpatchPID()
 void patchServiceAccess()
 {
 	// Set the current process id (PID) to 0
-	svcBackdoor(&patchPID);
+	svcBackdoor((void*)&patchPID);
 	
 	// Re-initialize srv connection. It will consider this the process with id 0
 	// so we will have access to any service
@@ -88,7 +88,7 @@ void patchServiceAccess()
 	srvInit();
 	
 	// Once we tricked srv we can restore the real PID
-	svcBackdoor(&unpatchPID);
+	svcBackdoor((void*)&unpatchPID);
 }
 
 static void kernel_entry()
