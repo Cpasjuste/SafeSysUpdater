@@ -40,5 +40,5 @@ Changes :
 - v01: Added a CIA version to downgrade from emunand so you don't need to try hard to get the hax to succeed (so it's just for testing/reporting bugs). Testing this will ensure the MD5 for each regions/models (only o3DS/n3DS USA/EUR for now) and downgrade process is correct/working. Thanks for reports !
 
 Credits:
-- profi200 for sysUpdater
 - @Steveice10 and all people involved for memchunkhax2
+- This app was totally rewritted,but thank profi200 for the original
