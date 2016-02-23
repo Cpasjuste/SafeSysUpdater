@@ -105,6 +105,10 @@ void downgrade() {
     std::vector<TitleInfo> titlesInstalled = listTitles();
     debug->printg("GOOD\n");
 
+    if (mode == MODE_TITLES_DUMP) {
+        quit();
+    }
+
     // get system info
     debug->print("Check device -> ");
     Utility::SysInfo *sysInfo = Utility::getSysInfo();
