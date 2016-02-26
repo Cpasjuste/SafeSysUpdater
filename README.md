@@ -42,7 +42,7 @@ Changes :
 
 Credits:
 - derrek for the initial memchunkhax2 flaw discovery
-- [Steveice10](https://github.com/Steveice10) and all people involved for [memchunkhax2 implementation](https://github.com/Steveice10/memchunkhax2)
+- [Steveice10](https://github.com/Steveice10) and all people who worked on [memchunkhax2](https://github.com/Steveice10/memchunkhax2)
 - [TuxSH](http://github.com/TuxSH) for the downgrade code (memchunkhax2 implementation)
 - This app was totally rewritted,but thank profi200 for the original app
 
