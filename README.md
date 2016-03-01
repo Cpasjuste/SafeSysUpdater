@@ -29,6 +29,7 @@ Notes:
 
 Changes :
 
+- v09: add downgrade logs ("/SafeSys.log")
 - v08: fix JPN files path..
 - v07: finally fixed the input freeze... by removing this second confirmation screen.
 - v06: try to fix input freeze... again
@@ -40,5 +41,14 @@ Changes :
 - v01: Added a CIA version to downgrade from emunand so you don't need to try hard to get the hax to succeed (so it's just for testing/reporting bugs). Testing this will ensure the MD5 for each regions/models (only o3DS/n3DS USA/EUR for now) and downgrade process is correct/working. Thanks for reports !
 
 Credits:
-- @Steveice10 and all people involved for memchunkhax2
-- This app was totally rewritted,but thank profi200 for the original
+- derrek for the initial memchunkhax2 flaw discovery
+- [Steveice10](https://github.com/Steveice10) and all people who worked on [memchunkhax2](https://github.com/Steveice10/memchunkhax2)
+- [TuxSH](http://github.com/TuxSH) for the downgrade code (memchunkhax2 implementation)
+- This app was totally rewritted,but thank profi200 for the original app
+
+Screenshot:
+
+![SafeSysUpdater Top](http://files.mydedibox.fr/files/Dev/3ds/ssu1.png "SafeSysUpdater Top")
+
+![SafeSysUpdater Down](http://files.mydedibox.fr/files/Dev/3ds/ssu2.png "SafeSysUpdater Down")
+
