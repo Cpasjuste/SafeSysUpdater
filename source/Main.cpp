@@ -168,6 +168,8 @@ void downgrade() {
         quit();
     }
 
+    std::sort(titlesToInstall.begin(), titlesToInstall.end(), Utility::sortTitles);
+
     // downgrade !
     debug->printr("\n-> DOWNGRADING <-\n\n");
     for (auto it : titlesToInstall) {
@@ -221,16 +223,14 @@ int main(int argc, char *argv[]) {
     }
 
     consoleClear();
+    printf("HAX INIT...\n");
 
     if (mode > MODE_TITLES_CHECK) { // needs AM
-        gfxExit();
         if (Utility::getAMu() != 0) {
-            _gfxInit();
             debug->printr("FAIL\n");
             debug->printr("Can't get am:u service ... try again :x\n");
             quit();
         }
-        _gfxInit();
         debug->printg("HAX SUCCESS\n");
     }
 

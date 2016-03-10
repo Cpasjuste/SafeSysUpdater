@@ -14,8 +14,16 @@ include(Tools3DS) # Include all the macros and tools needed for 3ds development.
 find_package(CTRULIB REQUIRED) # Look for ctrulib
 
 file(GLOB_RECURSE SOURCE_FILES
-        source/*
+    source/*
 )
+file(GLOB FILTER_FILES
+    source/SuperUserLib3DS/demo/source/*
+    source/svchax/test.c
+)
+list(REMOVE_ITEM SOURCE_FILES
+    ${FILTER_FILES}
+)
+
 add_executable(SafeSysUpdater ${SOURCE_FILES}) # Create the elf file
 
 target_link_libraries(SafeSysUpdater ${LIBCTRU_LIBRARIES}) # Link ctrulib

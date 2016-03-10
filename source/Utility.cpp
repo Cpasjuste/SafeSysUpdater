@@ -11,27 +11,67 @@
 #define BUFSIZE 131072
 static FS_Archive sdmcArchive;
 
+extern void _gfxInit();
+extern u8 isNew3DS;
+extern "C" {
+    void patchServiceAccess();
+    void svchax_init();
+}
+
 static const u32 titleTypes[7] = {
-        0x00040138, // System Firmware
-        0x00040130, // System Modules
-        0x00040030, // Applets
-        0x00040010, // System Applications
-        0x0004001B, // System Data Archives
-        0x0004009B, // System Data Archives (Shared Archives)
-        0x000400DB, // System Data Archives
+    0x00040138, // System Firmware
+    0x00040130, // System Modules
+    0x00040030, // Applets
+    0x00040010, // System Applications
+    0x0004001B, // System Data Archives
+    0x0004009B, // System Data Archives (Shared Archives)
+    0x000400DB, // System Data Archives
 };
 
-static u32 getTitlePriority(u64 id) {
+static const u64 titleHomeMenu[3] = {
+    0x0004003000008F02, // USA	Home Menu
+    0x0004003000009802, // EUR	Home Menu
+    0x0004003000008202, // JPN	Home Menu
+};
+
+static const u64 titleBrowser[6] = {
+    0x0004003020009402, // USA	New3DS Internet Browser
+    0x0004003020009D02, // EUR	New3DS Internet Browser
+    0x0004003020008802, // JPN	New3DS Internet Browser
+    0x0004003000009402, // USA Internet Browser
+    0x0004003000009D02, // EUR Internet Browser
+    0x0004003000008802, // JPN Internet Browser
+};
+
+u32 Utility::getTitlePriority(u64 id) {
+
+    // nfirm last
+    if( id == 0x0004013800000002LL
+        || id == 0x0004013820000002LL) {
+        return 0;
+    }
+
+    // downgrade browser and homemenu last
+    for (u32 i = 0; i < 6; i++) {
+        if (id == titleBrowser[i]) {
+            return 2;
+        }
+    }
+    for (u32 i = 0; i < 3; i++) {
+        if (id == titleHomeMenu[i]) {
+            return 1;
+        }
+    }
     u32 type = (u32) (id >> 32);
     for (u32 i = 0; i < 7; i++) {
         if (type == titleTypes[i]) {
-            return i;
+            return i+3;
         }
     }
     return 0;
 }
 
-static bool sortTitles(const TitleInfo &a, const TitleInfo &b) {
+bool Utility::sortTitles(const TitleInfo &a, const TitleInfo &b) {
     bool aSafe = (a.titleID & 0xFF) == 0x03;
     bool bSafe = (b.titleID & 0xFF) == 0x03;
     if (aSafe != bSafe) {
@@ -189,14 +229,26 @@ int Utility::getAMu() {
     }
 
     // try to get arm11
-    if (suInit() == 0) {
-        // verify am:u access
-        srvGetServiceHandleDirect(&amHandle, "am:u");
-        if (amHandle) {
-            svcCloseHandle(amHandle);
-            return 0;
+    if(osGetKernelVersion() > SYSTEM_VERSION(2,50,9)) {
+        svchax_init();
+        aptInit();
+        APT_CheckNew3DS(&isNew3DS);
+        patchServiceAccess();
+    } else {
+        gfxExit();
+        if (suInit() != 0) {
+            _gfxInit();
+            return 1;
         }
+        _gfxInit();
     }
+
+    srvGetServiceHandleDirect(&amHandle, "am:u");
+    if (amHandle) {
+        svcCloseHandle(amHandle);
+        return 0;
+    }
+
     return 1;
 }
 

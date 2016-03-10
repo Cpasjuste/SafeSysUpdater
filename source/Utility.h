@@ -29,6 +29,10 @@ public:
 
     static bool installTitle(std::string path);
 
+    static u32 getTitlePriority(u64 id);
+
+    static bool sortTitles(const TitleInfo &a, const TitleInfo &b);
+
     static int cmp(std::vector<TitleInfo> &installedTitles, u64 &titleID, u16 version);
 
     static int version(std::vector<TitleInfo> &titles, u64 &titleID);
