@@ -6,7 +6,7 @@
 #include "Debug.h"
 
 Debug::Debug() {
-    fp = fopen("/SafeSys.log", "w");
+    fp = fopen("/PlaiSys.log", "w");
 }
 
 Debug::~Debug() {
@@ -37,7 +37,7 @@ void Debug::print(const char *format, ...) {
     vsnprintf(msg, 1024, format, argp);
     va_end(argp);
 
-    printf(msg);
+    printf("%05d", msg);
 
     if (fp != NULL) {
         fputs(msg, fp);
