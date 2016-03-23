@@ -11,6 +11,9 @@
 #include "Updates/UpdateInfoEur.h"
 #include "Updates/UpdateInfoUsa.h"
 #include "Updates/UpdateInfoJpn.h"
+#include "Updates/UpdateInfoEur-2-1.h"
+#include "Updates/UpdateInfoUsa-2-1.h"
+#include "Updates/UpdateInfoJpn-2-1.h"
 #include "Utility.h"
 #include "Debug.h"
 
