@@ -144,12 +144,14 @@ void downgrade() {
     // find update information based on device model/region
     debug->print("Check update info -> ");
 
+    UpdateInfo * update;
+
     if (mode == MODE_TITLES_DOWNGRADE) {
-        UpdateInfo *update = getUpdateInfo(sysInfo->model, sysInfo->region);
+        update = getUpdateInfo(sysInfo->model, sysInfo->region);
     }
 
     else if (mode == MODE_TITLES_DOWNGRADE21) {
-        UpdateInfo *update = getUpdateInfo21(sysInfo->model, sysInfo->region);
+        update = getUpdateInfo21(sysInfo->model, sysInfo->region);
     }
 
     if (update == NULL) {
