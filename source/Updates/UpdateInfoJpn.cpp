@@ -16,7 +16,7 @@ UpdateInfoJpn::UpdateInfoJpn(int deviceType) {
         items.push_back(UpdateItem("375edb36da62ae44d4d8c91dab854573", "/updates/0004001000020000.cia"));
         items.push_back(UpdateItem("6a805cdad0b0edc9ff2fa1856d86210c", "/updates/0004001000020100.cia"));
         items.push_back(UpdateItem("3cc3db0a371ce24c383984e025117945", "/updates/0004001000020400.cia"));
-        items.push_back(UpdateItem("2b032b6008cc34337bd5a08825744fb3", "/updates/0004001000020900.cia"));
+        items.push_back(UpdateItem("6b7605c56257eb1c2c24fd6997b63335", "/updates/0004001000020900.cia"));
         items.push_back(UpdateItem("d03c266e8be65da7ef8fab4031f1caa6", "/updates/0004001000020A00.cia"));
         items.push_back(UpdateItem("4e0f6300e62ae876e91ade16af0791a6", "/updates/000400100002BF00.cia"));
         items.push_back(UpdateItem("2f5dd24d3715e72bef491c0d75080192", "/updates/0004001020020300.cia"));

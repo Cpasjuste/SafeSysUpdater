@@ -211,7 +211,8 @@ int main(int argc, char *argv[]) {
     _gfxInit();
     debug = new Debug();
 
-    debug->print("\nSafeSysUpdater @ Cpasjuste\n\n");
+    debug->print("\nPlaiSysUpdater @ Plailect\n\n");
+    printf("Forked (SafeSysUpdater @ Cpasjuste)\n");
     printf("Press (X) to dump titles list...\n");
     printf("Press (Y) to downgrade...\n");
     printf("Press (A) to check update files...\n");

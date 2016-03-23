@@ -229,19 +229,10 @@ int Utility::getAMu() {
     }
 
     // try to get arm11
-    if(osGetKernelVersion() > SYSTEM_VERSION(2,50,9)) {
-        svchax_init();
-        aptInit();
-        APT_CheckNew3DS(&isNew3DS);
-        patchServiceAccess();
-    } else {
-        gfxExit();
-        if (suInit() != 0) {
-            _gfxInit();
-            return 1;
-        }
-        _gfxInit();
-    }
+    svchax_init();
+    aptInit();
+    APT_CheckNew3DS(&isNew3DS);
+    patchServiceAccess();
 
     srvGetServiceHandleDirect(&amHandle, "am:u");
     if (amHandle) {
