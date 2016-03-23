@@ -65,8 +65,6 @@ int checkMode() {
                 return MODE_TITLES_DOWNGRADE21;
             case KEY_Y:
                 return MODE_TITLES_DOWNGRADE;
-            case KEY_A:
-                return MODE_TITLES_CHECK;
             case KEY_B:
                 return MODE_EXIT;
             default:
@@ -150,7 +148,7 @@ void downgrade() {
         update = getUpdateInfo(sysInfo->model, sysInfo->region);
     }
 
-    else if (mode == MODE_TITLES_DOWNGRADE21) {
+    if (mode == MODE_TITLES_DOWNGRADE21) {
         update = getUpdateInfo21(sysInfo->model, sysInfo->region);
     }
 
@@ -242,11 +240,10 @@ int main(int argc, char *argv[]) {
     debug = new Debug();
 
     debug->print("\nPlaiSysUpdater @ Plailect\n\n");
-    printf("Forked (SafeSysUpdater @ Cpasjuste)\n");
+    printf("Forked (SafeSysUpdater @ Cpasjuste)\n\n");
     printf("Press (Select) to dump titles list...\n");
     printf("Press (X) to downgrade to 2.1.0...\n");
     printf("Press (Y) to downgrade to 9.2.0...\n");
-    printf("Press (A) to check update files...\n");
     printf("Press (B) to exit...\n");
 
     mode = checkMode();
