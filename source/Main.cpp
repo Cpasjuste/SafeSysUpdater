@@ -55,8 +55,10 @@ int checkMode() {
     while (aptMainLoop()) {
         hidScanInput();
         switch (hidKeysDown()) {
-            case KEY_X:
+            case KEY_SELECT:
                 return MODE_TITLES_DUMP;
+            case KEY_X:
+                return MODE_TITLES_DOWNGRADE21;
             case KEY_Y:
                 return MODE_TITLES_DOWNGRADE;
             case KEY_A:
@@ -81,6 +83,20 @@ UpdateInfo *getUpdateInfo(int model, int region) {
             return (UpdateInfo *) new UpdateInfoUsa(model);
         case 2: // EUR
             return (UpdateInfo *) new UpdateInfoEur(model);
+        default:
+            return NULL;
+    }
+    return NULL;
+}
+
+UpdateInfo *getUpdateInfo21(int model, int region) {
+    switch (region) {
+        case 0: // JPN
+            return (UpdateInfo *) new UpdateInfoJpn21(model);
+        case 1: // USA
+            return (UpdateInfo *) new UpdateInfoUsa21(model);
+        case 2: // EUR
+            return (UpdateInfo *) new UpdateInfoEur21(model);
         default:
             return NULL;
     }
@@ -123,7 +139,15 @@ void downgrade() {
 
     // find update information based on device model/region
     debug->print("Check update info -> ");
-    UpdateInfo *update = getUpdateInfo(sysInfo->model, sysInfo->region);
+
+    if (mode == MODE_TITLES_DOWNGRADE) {
+        UpdateInfo *update = getUpdateInfo(sysInfo->model, sysInfo->region);
+    }
+
+    else if (mode == MODE_TITLES_DOWNGRADE21) {
+        UpdateInfo *update = getUpdateInfo21(sysInfo->model, sysInfo->region);
+    }
+
     if (update == NULL) {
         debug->printr("FAIL\n");
         debug->printr("Can't find update config for your system...\n");
@@ -135,7 +159,7 @@ void downgrade() {
     // check md5/add files to update list
     debug->print("\nCheck update integrity...\n\n");
     for (std::vector<UpdateItem>::iterator it = update->items.begin(); it != update->items.end(); ++it) {
-        if (mode == MODE_TITLES_DOWNGRADE) {
+        if (mode == MODE_TITLES_DOWNGRADE || mode == MODE_TITLES_DOWNGRADE21) {
             TitleInfo title = Utility::getTitleInfo(it->getPath());
             if (title.titleID < 1) {
                 debug->printr("Can't get cia information (hax didn't succeed?)\n");
@@ -213,8 +237,9 @@ int main(int argc, char *argv[]) {
 
     debug->print("\nPlaiSysUpdater @ Plailect\n\n");
     printf("Forked (SafeSysUpdater @ Cpasjuste)\n");
-    printf("Press (X) to dump titles list...\n");
-    printf("Press (Y) to downgrade...\n");
+    printf("Press (Select) to dump titles list...\n");
+    printf("Press (X) to downgrade to 2.1.0...\n");
+    printf("Press (Y) to downgrade to 9.2.0...\n");
     printf("Press (A) to check update files...\n");
     printf("Press (B) to exit...\n");
 
