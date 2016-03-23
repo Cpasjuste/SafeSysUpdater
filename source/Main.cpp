@@ -208,7 +208,7 @@ void downgrade() {
         if (nativeFirm) {
             debug->print("(NFIRM) ");
         }
-        debug->print(": %05d v.%i -> %05d v.%i -> ", Utility::version(titlesInstalled, it.titleID), it.version);
+        debug->print(": v.%05i -> v.%05i -> ", Utility::version(titlesInstalled, it.titleID), it.version);
         if (it.deleteNeeded) Utility::deleteTitle(it.titleID);
         Utility::installTitle(it.path);
         if (nativeFirm && AM_InstallFirm(it.titleID)) {
