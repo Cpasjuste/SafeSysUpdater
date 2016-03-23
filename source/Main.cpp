@@ -21,6 +21,7 @@
 #define MODE_TITLES_CHECK 1
 #define MODE_TITLES_DUMP 2 // needs am
 #define MODE_TITLES_DOWNGRADE 3 // needs am
+#define MODE_TITLES_DOWNGRADE21 4 // needs am
 int mode = MODE_EXIT;
 Debug *debug;
 
