@@ -37,7 +37,7 @@ void Debug::print(const char *format, ...) {
     vsnprintf(msg, 1024, format, argp);
     va_end(argp);
 
-    printf("%05d", msg);
+    printf(msg);
 
     if (fp != NULL) {
         fputs(msg, fp);
