@@ -171,7 +171,7 @@ void downgrade() {
             }
             int res = Utility::cmp(titlesInstalled, title.titleID, title.version);
             if (res != 0) {
-                debug->print("MD5 -> id: %016llx - ver: %0i -> ", title.titleID, title.version);
+                debug->print("MD5 -> id: %016llx - ver: %05i -> ", title.titleID, title.version);
                 if (Utility::checkMD5(it->getPath().c_str(), it->getMD5().c_str()) != 0) {
                     debug->printr("FAIL\n");
                     quit();
