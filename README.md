@@ -2,6 +2,7 @@ This is a fork of [SafeSysUpdater](https://github.com/Cpasjuste/SafeSysUpdater) 
 
 PlaiSysUpdater Changes :
 
+- v03: Fixed 9.2.0J hashes
 - v02: Updated svchax to support all versions
 - v01: Added 2.1.0 support, fixed 9.2.0J title mismatch, and merged [pull request 13](https://github.com/Cpasjuste/SafeSysUpdater/pull/13)
 
