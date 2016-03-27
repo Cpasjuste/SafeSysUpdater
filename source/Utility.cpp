@@ -5,7 +5,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "Utility.h"
-#include "SuperUserLib3DS/libsu.h"
 #include "libmd5-rfc/md5.h"
 
 #define BUFSIZE 131072
