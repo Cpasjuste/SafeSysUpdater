@@ -17,7 +17,6 @@ file(GLOB_RECURSE SOURCE_FILES
     source/*
 )
 file(GLOB FILTER_FILES
-    source/SuperUserLib3DS/demo/source/*
     source/svchax/test.c
 )
 list(REMOVE_ITEM SOURCE_FILES
