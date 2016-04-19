@@ -17,7 +17,7 @@ file(GLOB_RECURSE SOURCE_FILES
     source/*
 )
 file(GLOB FILTER_FILES
-    source/svchax/test.c
+    source/svchax/svchax.c
 )
 list(REMOVE_ITEM SOURCE_FILES
     ${FILTER_FILES}
