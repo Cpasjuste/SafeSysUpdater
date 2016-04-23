@@ -5,7 +5,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "Utility.h"
-#include "SuperUserLib3DS/libsu.h"
 #include "libmd5-rfc/md5.h"
 
 #define BUFSIZE 131072
@@ -229,19 +228,10 @@ int Utility::getAMu() {
     }
 
     // try to get arm11
-    if(osGetKernelVersion() > SYSTEM_VERSION(2,50,9)) {
-        svchax_init();
-        aptInit();
-        APT_CheckNew3DS(&isNew3DS);
-        patchServiceAccess();
-    } else {
-        gfxExit();
-        if (suInit() != 0) {
-            _gfxInit();
-            return 1;
-        }
-        _gfxInit();
-    }
+    svchax_init();
+    aptInit();
+    APT_CheckNew3DS(&isNew3DS);
+    patchServiceAccess();
 
     srvGetServiceHandleDirect(&amHandle, "am:u");
     if (amHandle) {
