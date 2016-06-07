@@ -28,19 +28,22 @@ static const u32 titleTypes[7] = {
     0x000400DB, // System Data Archives
 };
 
-static const u64 titleHomeMenu[3] = {
+static const u64 titleHomeMenu[4] = {
     0x0004003000008F02, // USA	Home Menu
     0x0004003000009802, // EUR	Home Menu
     0x0004003000008202, // JPN	Home Menu
+    0x000400300000A902, // KOR  Home Menu
 };
 
-static const u64 titleBrowser[6] = {
+static const u64 titleBrowser[8] = {
     0x0004003020009402, // USA	New3DS Internet Browser
     0x0004003020009D02, // EUR	New3DS Internet Browser
     0x0004003020008802, // JPN	New3DS Internet Browser
+    0x000400302000AE02, // KOR  New3DS Internet Browser
     0x0004003000009402, // USA Internet Browser
     0x0004003000009D02, // EUR Internet Browser
     0x0004003000008802, // JPN Internet Browser
+    0x000400300000AE02, // KOR Internet Browser
 };
 
 u32 Utility::getTitlePriority(u64 id) {
@@ -52,12 +55,12 @@ u32 Utility::getTitlePriority(u64 id) {
     }
 
     // downgrade browser and homemenu last
-    for (u32 i = 0; i < 6; i++) {
+    for (u32 i = 0; i < 8; i++) {
         if (id == titleBrowser[i]) {
             return 2;
         }
     }
-    for (u32 i = 0; i < 3; i++) {
+    for (u32 i = 0; i < 4; i++) {
         if (id == titleHomeMenu[i]) {
             return 1;
         }
