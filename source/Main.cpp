@@ -11,6 +11,7 @@
 #include "Updates/UpdateInfoEur.h"
 #include "Updates/UpdateInfoUsa.h"
 #include "Updates/UpdateInfoJpn.h"
+#include "Updates/UpdateInfoKor.h"
 #include "Utility.h"
 #include "Debug.h"
 
@@ -81,6 +82,12 @@ UpdateInfo *getUpdateInfo(int model, int region) {
             return (UpdateInfo *) new UpdateInfoUsa(model);
         case 2: // EUR
             return (UpdateInfo *) new UpdateInfoEur(model);
+        case 5: // KOR
+            // Not support KOR N3DS
+            if (model == 2 || model == 4) {
+                return NULL;
+            }
+            return (UpdateInfo *) new UpdateInfoKor(model);
         default:
             return NULL;
     }
