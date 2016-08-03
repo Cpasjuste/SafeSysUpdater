@@ -5,7 +5,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "Utility.h"
-#include "SuperUserLib3DS/libsu.h"
 #include "libmd5-rfc/md5.h"
 
 #define BUFSIZE 131072
@@ -14,7 +13,6 @@ static FS_Archive sdmcArchive;
 extern void _gfxInit();
 extern u8 isNew3DS;
 extern "C" {
-    void patchServiceAccess();
     void svchax_init();
 }
 
@@ -231,8 +229,6 @@ int Utility::getAMu() {
     // try to get arm11
     svchax_init();
     aptInit();
-    APT_CheckNew3DS(&isNew3DS);
-    patchServiceAccess();
 
     srvGetServiceHandleDirect(&amHandle, "am:u");
     if (amHandle) {
