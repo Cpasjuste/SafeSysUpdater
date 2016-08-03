@@ -229,9 +229,7 @@ void downgrade() {
     svcSleepThread(10000000000LL);
     debug->print("Trying to reboot...\n");
     while (aptInit() != 0) { };
-    aptOpenSession();
     while (APT_HardwareResetAsync() != 0) { };
-    aptCloseSession();
 }
 
 int main(int argc, char *argv[]) {
