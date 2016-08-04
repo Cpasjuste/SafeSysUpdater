@@ -11,7 +11,7 @@
 static FS_Archive sdmcArchive;
 
 extern void _gfxInit();
-extern u8 isNew3DS;
+extern bool isNew3DS;
 extern "C" {
     void svchax_init();
 }
@@ -106,12 +106,16 @@ std::vector<TitleInfo> Utility::getTitles() {
     }
 
     u64 titlesId[count];
-    if (AM_GetTitleIdList(MEDIATYPE_NAND, count, titlesId)) {
-        return titles;
+    
+    {
+        u32 throwaway;
+        if (AM_GetTitleList(&throwaway, MEDIATYPE_NAND, count, titlesId)) {
+            return titles;
+        }
     }
 
     AM_TitleEntry titleList[count];
-    if (AM_ListTitles(MEDIATYPE_NAND, count, titlesId, titleList)) {
+    if (AM_GetTitleInfo(MEDIATYPE_NAND, count, titlesId, titleList)) {
         return titles;
     }
 
@@ -177,14 +181,14 @@ bool Utility::installTitle(std::string path) {
         bytesToRead = i + BUFSIZE > size ? size - i : BUFSIZE;
 
         if (FSFILE_Read(fileHandle, &bytes, i, ciaBuffer, bytesToRead)) {
-            AM_CancelCIAInstall(&ciaHandle);
+            AM_CancelCIAInstall(ciaHandle);
             FSFILE_Close(fileHandle);
             free(ciaBuffer);
             return false;
         }
 
         if (FSFILE_Write(ciaHandle, &bytes, i, ciaBuffer, bytesToRead, FS_WRITE_FLUSH)) {
-            AM_CancelCIAInstall(&ciaHandle);
+            AM_CancelCIAInstall(ciaHandle);
             FSFILE_Close(fileHandle);
             free(ciaBuffer);
             return false;
@@ -193,8 +197,8 @@ bool Utility::installTitle(std::string path) {
         i += bytesToRead;
     }
 
-    if (AM_FinishCiaInstall(MEDIATYPE_NAND, &ciaHandle)) {
-        AM_CancelCIAInstall(&ciaHandle);
+    if (AM_FinishCiaInstall(ciaHandle)) {
+        AM_CancelCIAInstall(ciaHandle);
         FSFILE_Close(fileHandle);
         free(ciaBuffer);
         return false;
@@ -285,10 +289,9 @@ void Utility::closeFileHandle(const Handle &handle) {
 }
 
 void Utility::sdmcArchiveInit() {
-    sdmcArchive = (FS_Archive) {0x00000009, (FS_Path) {PATH_EMPTY, 1, (u8 *) ""}};
-    FSUSER_OpenArchive(&sdmcArchive);
+    FSUSER_OpenArchive(&sdmcArchive, ARCHIVE_SDMC, (FS_Path) {PATH_EMPTY, 1, (u8 *) ""});
 }
 
 void Utility::sdmcArchiveExit() {
-    FSUSER_CloseArchive(&sdmcArchive);
+    FSUSER_CloseArchive(sdmcArchive);
 }
