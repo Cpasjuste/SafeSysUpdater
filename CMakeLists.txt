@@ -29,8 +29,7 @@ target_link_libraries(PlaiSysUpdater ${LIBCTRU_LIBRARIES}) # Link ctrulib
 
 target_include_directories(PlaiSysUpdater PUBLIC ${LIBCTRU_INCLUDE_DIRS}) # Add the ctrulib include folder
 target_include_directories(PlaiSysUpdater PUBLIC "/opt/devkitpro/portlibs/armv6k/include")
-target_include_directories(PlaiSysUpdater PUBLIC source/sysUpdater/include)
-target_include_directories(PlaiSysUpdater PUBLIC source/sysUpdater/include/zip)
+target_include_directories(PlaiSysUpdater PUBLIC "source/svchax")
 
 add_3dsx_target(PlaiSysUpdater) # Generate the .3dsx and .smdh from the CtrManager target
 add_netload_target(PlaiSysUpdater_3dslink PlaiSysUpdater)
