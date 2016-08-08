@@ -225,7 +225,7 @@ void downgrade() {
     free(update);
 
     debug->print("\n\nDowngrade completed. Trying to reboot in 10 sec...\n");
-    debug->print("PowerOff your device if it doesn't...\n");
+    debug->print("Power off your device if it doesn't...\n");
     svcSleepThread(10000000000LL);
     debug->print("Trying to reboot...\n");
     while (aptInit() != 0) { };
@@ -250,7 +250,6 @@ int main(int argc, char *argv[]) {
     }
 
     consoleClear();
-    printf("HAX INIT...\n");
 
     if (mode > MODE_TITLES_CHECK) { // needs AM
         if (Utility::getAMu() != 0) {
@@ -258,7 +257,7 @@ int main(int argc, char *argv[]) {
             debug->printr("Can't get am:u service ... try again :x\n");
             quit();
         }
-        debug->printg("HAX SUCCESS\n");
+        debug->printg("Got am:u service!\n");
     }
 
     // late init

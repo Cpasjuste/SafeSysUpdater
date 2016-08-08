@@ -16,12 +16,6 @@ find_package(CTRULIB REQUIRED) # Look for ctrulib
 file(GLOB_RECURSE SOURCE_FILES
     source/*
 )
-file(GLOB FILTER_FILES
-    source/svchax/test/test.c
-)
-list(REMOVE_ITEM SOURCE_FILES
-    ${FILTER_FILES}
-)
 
 add_executable(PlaiSysUpdater ${SOURCE_FILES}) # Create the elf file
 

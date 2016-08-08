@@ -11,7 +11,6 @@
 static FS_Archive sdmcArchive;
 
 extern void _gfxInit();
-extern bool isNew3DS;
 extern "C" {
     void svchax_init();
 }
@@ -106,7 +105,7 @@ std::vector<TitleInfo> Utility::getTitles() {
     }
 
     u64 titlesId[count];
-    
+
     {
         u32 throwaway;
         if (AM_GetTitleList(&throwaway, MEDIATYPE_NAND, count, titlesId)) {
@@ -223,20 +222,30 @@ int Utility::getAMu() {
 
     Handle amHandle = 0;
 
+    printf("Checking for am:u...\n");
     // verify am:u access
     srvGetServiceHandleDirect(&amHandle, "am:u");
     if (amHandle) {
         svcCloseHandle(amHandle);
+        printf("Got am:u handle!\n");
         return 0;
     }
 
+    printf("Did not get am:u handle!\n");
+    printf("Attempting svchax...\n");
+
     // try to get arm11
     svchax_init();
+    printf("Initted svchax...\n");
     aptInit();
+    printf("Initted apt...\n");
 
+    printf("Checking for am:u...\n");
+    // verify am:u access
     srvGetServiceHandleDirect(&amHandle, "am:u");
     if (amHandle) {
         svcCloseHandle(amHandle);
+        printf("Got am:u handle!\n");
         return 0;
     }
 
