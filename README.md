@@ -1,3 +1,5 @@
+# This project has been replaced by [sysDowngrader](https://github.com/Plailect/sysDowngrader).
+
 This is a fork of [SafeSysUpdater](https://github.com/Cpasjuste/SafeSysUpdater) which supports 2.1.0 downgrading, 9.2.0 downgrading, GPU based memchunkhax2 for stability increases + <=10.7 support, and fixes some of the [outstanding issues](https://github.com/Cpasjuste/SafeSysUpdater/issues) of the original SafeSysUpdater.
 
 #### PlaiSysUpdater Changes :
