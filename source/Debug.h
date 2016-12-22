@@ -2,8 +2,8 @@
 // Created by cpasjuste on 15/01/16.
 //
 
-#ifndef SAFESYSUPDATER_DEBUG_H
-#define SAFESYSUPDATER_DEBUG_H
+#ifndef PLAISYSUPDATER_DEBUG_H
+#define PLAISYSUPDATER_DEBUG_H
 
 #include <stdio.h>
 
@@ -30,4 +30,4 @@ private:
 };
 
 
-#endif //SAFESYSUPDATER_DEBUG_H
+#endif //PLAISYSUPDATER_DEBUG_H

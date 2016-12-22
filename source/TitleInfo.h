@@ -2,8 +2,8 @@
 // Created by cpasjuste on 15/01/16.
 //
 
-#ifndef SAFESYSUPDATER_TITLEINFO_H
-#define SAFESYSUPDATER_TITLEINFO_H
+#ifndef PLAISYSUPDATER_TITLEINFO_H
+#define PLAISYSUPDATER_TITLEINFO_H
 
 #include <string>
 #include <3ds/types.h>
@@ -28,4 +28,4 @@ public:
     bool deleteNeeded;
 };
 
-#endif //SAFESYSUPDATER_TITLEINFO_H
+#endif //PLAISYSUPDATER_TITLEINFO_H

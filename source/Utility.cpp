@@ -5,16 +5,13 @@
 #include <string.h>
 #include <stdio.h>
 #include "Utility.h"
-#include "SuperUserLib3DS/libsu.h"
 #include "libmd5-rfc/md5.h"
 
 #define BUFSIZE 131072
 static FS_Archive sdmcArchive;
 
 extern void _gfxInit();
-extern u8 isNew3DS;
 extern "C" {
-    void patchServiceAccess();
     void svchax_init();
 }
 
@@ -108,12 +105,16 @@ std::vector<TitleInfo> Utility::getTitles() {
     }
 
     u64 titlesId[count];
-    if (AM_GetTitleIdList(MEDIATYPE_NAND, count, titlesId)) {
-        return titles;
+
+    {
+        u32 throwaway;
+        if (AM_GetTitleList(&throwaway, MEDIATYPE_NAND, count, titlesId)) {
+            return titles;
+        }
     }
 
     AM_TitleEntry titleList[count];
-    if (AM_ListTitles(MEDIATYPE_NAND, count, titlesId, titleList)) {
+    if (AM_GetTitleInfo(MEDIATYPE_NAND, count, titlesId, titleList)) {
         return titles;
     }
 
@@ -179,14 +180,14 @@ bool Utility::installTitle(std::string path) {
         bytesToRead = i + BUFSIZE > size ? size - i : BUFSIZE;
 
         if (FSFILE_Read(fileHandle, &bytes, i, ciaBuffer, bytesToRead)) {
-            AM_CancelCIAInstall(&ciaHandle);
+            AM_CancelCIAInstall(ciaHandle);
             FSFILE_Close(fileHandle);
             free(ciaBuffer);
             return false;
         }
 
         if (FSFILE_Write(ciaHandle, &bytes, i, ciaBuffer, bytesToRead, FS_WRITE_FLUSH)) {
-            AM_CancelCIAInstall(&ciaHandle);
+            AM_CancelCIAInstall(ciaHandle);
             FSFILE_Close(fileHandle);
             free(ciaBuffer);
             return false;
@@ -195,8 +196,8 @@ bool Utility::installTitle(std::string path) {
         i += bytesToRead;
     }
 
-    if (AM_FinishCiaInstall(MEDIATYPE_NAND, &ciaHandle)) {
-        AM_CancelCIAInstall(&ciaHandle);
+    if (AM_FinishCiaInstall(ciaHandle)) {
+        AM_CancelCIAInstall(ciaHandle);
         FSFILE_Close(fileHandle);
         free(ciaBuffer);
         return false;
@@ -221,31 +222,30 @@ int Utility::getAMu() {
 
     Handle amHandle = 0;
 
+    printf("Checking for am:u...\n");
     // verify am:u access
     srvGetServiceHandleDirect(&amHandle, "am:u");
     if (amHandle) {
         svcCloseHandle(amHandle);
+        printf("Got am:u handle!\n");
         return 0;
     }
 
-    // try to get arm11
-    if(osGetKernelVersion() > SYSTEM_VERSION(2,50,9)) {
-        svchax_init();
-        aptInit();
-        APT_CheckNew3DS(&isNew3DS);
-        patchServiceAccess();
-    } else {
-        gfxExit();
-        if (suInit() != 0) {
-            _gfxInit();
-            return 1;
-        }
-        _gfxInit();
-    }
+    printf("Did not get am:u handle!\n");
+    printf("Attempting svchax...\n");
 
+    // try to get arm11
+    svchax_init();
+    printf("Initted svchax...\n");
+    aptInit();
+    printf("Initted apt...\n");
+
+    printf("Checking for am:u...\n");
+    // verify am:u access
     srvGetServiceHandleDirect(&amHandle, "am:u");
     if (amHandle) {
         svcCloseHandle(amHandle);
+        printf("Got am:u handle!\n");
         return 0;
     }
 
@@ -298,10 +298,9 @@ void Utility::closeFileHandle(const Handle &handle) {
 }
 
 void Utility::sdmcArchiveInit() {
-    sdmcArchive = (FS_Archive) {0x00000009, (FS_Path) {PATH_EMPTY, 1, (u8 *) ""}};
-    FSUSER_OpenArchive(&sdmcArchive);
+    FSUSER_OpenArchive(&sdmcArchive, ARCHIVE_SDMC, (FS_Path) {PATH_EMPTY, 1, (u8 *) ""});
 }
 
 void Utility::sdmcArchiveExit() {
-    FSUSER_CloseArchive(&sdmcArchive);
+    FSUSER_CloseArchive(sdmcArchive);
 }

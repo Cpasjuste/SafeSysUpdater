@@ -2,8 +2,8 @@
 // Created by cpasjuste on 14/01/16.
 //
 
-#ifndef SAFESYSUPDATER_UTILITY_H
-#define SAFESYSUPDATER_UTILITY_H
+#ifndef PLAISYSUPDATER_UTILITY_H
+#define PLAISYSUPDATER_UTILITY_H
 
 #include <string>
 #include <vector>
@@ -54,4 +54,4 @@ private:
     static void closeFileHandle(const Handle &handle);
 };
 
-#endif //SAFESYSUPDATER_UTILITY_H
+#endif //PLAISYSUPDATER_UTILITY_H

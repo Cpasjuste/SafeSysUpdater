@@ -2,8 +2,8 @@
 // Created by cpasjuste on 11/01/16.
 //
 
-#ifndef SAFESYSUPDATER_UPDATEITEM_H
-#define SAFESYSUPDATER_UPDATEITEM_H
+#ifndef PLAISYSUPDATER_UPDATEITEM_H
+#define PLAISYSUPDATER_UPDATEITEM_H
 
 #include <string>
 
@@ -20,4 +20,4 @@ private:
 
 };
 
-#endif //SAFESYSUPDATER_UPDATEITEM_H
+#endif //PLAISYSUPDATER_UPDATEITEM_H

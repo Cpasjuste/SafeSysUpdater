@@ -11,6 +11,9 @@
 #include "Updates/UpdateInfoEur.h"
 #include "Updates/UpdateInfoUsa.h"
 #include "Updates/UpdateInfoJpn.h"
+#include "Updates/UpdateInfoEur-2-1.h"
+#include "Updates/UpdateInfoUsa-2-1.h"
+#include "Updates/UpdateInfoJpn-2-1.h"
 #include "Utility.h"
 #include "Debug.h"
 
@@ -18,6 +21,7 @@
 #define MODE_TITLES_CHECK 1
 #define MODE_TITLES_DUMP 2 // needs am
 #define MODE_TITLES_DOWNGRADE 3 // needs am
+#define MODE_TITLES_DOWNGRADE21 4 // needs am
 int mode = MODE_EXIT;
 Debug *debug;
 
@@ -55,12 +59,12 @@ int checkMode() {
     while (aptMainLoop()) {
         hidScanInput();
         switch (hidKeysDown()) {
-            case KEY_X:
+            case KEY_SELECT:
                 return MODE_TITLES_DUMP;
+            case KEY_X:
+                return MODE_TITLES_DOWNGRADE21;
             case KEY_Y:
                 return MODE_TITLES_DOWNGRADE;
-            case KEY_A:
-                return MODE_TITLES_CHECK;
             case KEY_B:
                 return MODE_EXIT;
             default:
@@ -81,6 +85,20 @@ UpdateInfo *getUpdateInfo(int model, int region) {
             return (UpdateInfo *) new UpdateInfoUsa(model);
         case 2: // EUR
             return (UpdateInfo *) new UpdateInfoEur(model);
+        default:
+            return NULL;
+    }
+    return NULL;
+}
+
+UpdateInfo *getUpdateInfo21(int model, int region) {
+    switch (region) {
+        case 0: // JPN
+            return (UpdateInfo *) new UpdateInfoJpn21(model);
+        case 1: // USA
+            return (UpdateInfo *) new UpdateInfoUsa21(model);
+        case 2: // EUR
+            return (UpdateInfo *) new UpdateInfoEur21(model);
         default:
             return NULL;
     }
@@ -123,7 +141,17 @@ void downgrade() {
 
     // find update information based on device model/region
     debug->print("Check update info -> ");
-    UpdateInfo *update = getUpdateInfo(sysInfo->model, sysInfo->region);
+
+    UpdateInfo * update;
+
+    if (mode == MODE_TITLES_DOWNGRADE) {
+        update = getUpdateInfo(sysInfo->model, sysInfo->region);
+    }
+
+    if (mode == MODE_TITLES_DOWNGRADE21) {
+        update = getUpdateInfo21(sysInfo->model, sysInfo->region);
+    }
+
     if (update == NULL) {
         debug->printr("FAIL\n");
         debug->printr("Can't find update config for your system...\n");
@@ -135,7 +163,7 @@ void downgrade() {
     // check md5/add files to update list
     debug->print("\nCheck update integrity...\n\n");
     for (std::vector<UpdateItem>::iterator it = update->items.begin(); it != update->items.end(); ++it) {
-        if (mode == MODE_TITLES_DOWNGRADE) {
+        if (mode == MODE_TITLES_DOWNGRADE || mode == MODE_TITLES_DOWNGRADE21) {
             TitleInfo title = Utility::getTitleInfo(it->getPath());
             if (title.titleID < 1) {
                 debug->printr("Can't get cia information (hax didn't succeed?)\n");
@@ -143,7 +171,7 @@ void downgrade() {
             }
             int res = Utility::cmp(titlesInstalled, title.titleID, title.version);
             if (res != 0) {
-                debug->print("MD5 -> id: %016llx - ver: %i -> ", title.titleID, title.version);
+                debug->print("MD5 -> id: %016llx - ver: %05i -> ", title.titleID, title.version);
                 if (Utility::checkMD5(it->getPath().c_str(), it->getMD5().c_str()) != 0) {
                     debug->printr("FAIL\n");
                     quit();
@@ -180,7 +208,7 @@ void downgrade() {
         if (nativeFirm) {
             debug->print("(NFIRM) ");
         }
-        debug->print(": v.%i -> v.%i -> ", Utility::version(titlesInstalled, it.titleID), it.version);
+        debug->print(": v.%05i -> v.%05i -> ", Utility::version(titlesInstalled, it.titleID), it.version);
         if (it.deleteNeeded) Utility::deleteTitle(it.titleID);
         Utility::installTitle(it.path);
         if (nativeFirm && AM_InstallFirm(it.titleID)) {
@@ -197,13 +225,11 @@ void downgrade() {
     free(update);
 
     debug->print("\n\nDowngrade completed. Trying to reboot in 10 sec...\n");
-    debug->print("PowerOff your device if it doesn't...\n");
+    debug->print("Power off your device if it doesn't...\n");
     svcSleepThread(10000000000LL);
     debug->print("Trying to reboot...\n");
     while (aptInit() != 0) { };
-    aptOpenSession();
     while (APT_HardwareResetAsync() != 0) { };
-    aptCloseSession();
 }
 
 int main(int argc, char *argv[]) {
@@ -211,10 +237,11 @@ int main(int argc, char *argv[]) {
     _gfxInit();
     debug = new Debug();
 
-    debug->print("\nSafeSysUpdater @ Cpasjuste\n\n");
-    printf("Press (X) to dump titles list...\n");
-    printf("Press (Y) to downgrade...\n");
-    printf("Press (A) to check update files...\n");
+    debug->print("\nPlaiSysUpdater @ Plailect\n\n");
+    printf("Forked (SafeSysUpdater @ Cpasjuste)\n\n");
+    printf("Press (Select) to dump titles list...\n");
+    printf("Press (X) to downgrade to 2.1.0...\n");
+    printf("Press (Y) to downgrade to 9.2.0...\n");
     printf("Press (B) to exit...\n");
 
     mode = checkMode();
@@ -223,7 +250,6 @@ int main(int argc, char *argv[]) {
     }
 
     consoleClear();
-    printf("HAX INIT...\n");
 
     if (mode > MODE_TITLES_CHECK) { // needs AM
         if (Utility::getAMu() != 0) {
@@ -231,7 +257,7 @@ int main(int argc, char *argv[]) {
             debug->printr("Can't get am:u service ... try again :x\n");
             quit();
         }
-        debug->printg("HAX SUCCESS\n");
+        debug->printg("Got am:u service!\n");
     }
 
     // late init

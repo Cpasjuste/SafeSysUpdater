@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(SafeSysUpdater)
+project(PlaiSysUpdater)
 enable_language(ASM)
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
@@ -16,25 +16,17 @@ find_package(CTRULIB REQUIRED) # Look for ctrulib
 file(GLOB_RECURSE SOURCE_FILES
     source/*
 )
-file(GLOB FILTER_FILES
-    source/SuperUserLib3DS/demo/source/*
-    source/svchax/test.c
-)
-list(REMOVE_ITEM SOURCE_FILES
-    ${FILTER_FILES}
-)
 
-add_executable(SafeSysUpdater ${SOURCE_FILES}) # Create the elf file
+add_executable(PlaiSysUpdater ${SOURCE_FILES}) # Create the elf file
 
-target_link_libraries(SafeSysUpdater ${LIBCTRU_LIBRARIES}) # Link ctrulib
+target_link_libraries(PlaiSysUpdater ${LIBCTRU_LIBRARIES}) # Link ctrulib
 
-target_include_directories(SafeSysUpdater PUBLIC ${LIBCTRU_INCLUDE_DIRS}) # Add the ctrulib include folder
-target_include_directories(SafeSysUpdater PUBLIC "/opt/devkitpro/portlibs/armv6k/include")
-target_include_directories(SafeSysUpdater PUBLIC source/sysUpdater/include)
-target_include_directories(SafeSysUpdater PUBLIC source/sysUpdater/include/zip)
+target_include_directories(PlaiSysUpdater PUBLIC ${LIBCTRU_INCLUDE_DIRS}) # Add the ctrulib include folder
+target_include_directories(PlaiSysUpdater PUBLIC "/opt/devkitpro/portlibs/armv6k/include")
+target_include_directories(PlaiSysUpdater PUBLIC "source/svchax")
 
-add_3dsx_target(SafeSysUpdater) # Generate the .3dsx and .smdh from the CtrManager target
-add_netload_target(SafeSysUpdater_3dslink SafeSysUpdater)
-add_cia_target(SafeSysUpdater res/app.rsf res/banner.png res/audio.wav)
-add_citra_target(SafeSysUpdater_Citra SafeSysUpdater)
-set_target_properties(SafeSysUpdater PROPERTIES COMPILE_FLAGS "-DCITRA")
+add_3dsx_target(PlaiSysUpdater) # Generate the .3dsx and .smdh from the CtrManager target
+add_netload_target(PlaiSysUpdater_3dslink PlaiSysUpdater)
+add_cia_target(PlaiSysUpdater res/app.rsf res/banner.png res/audio.wav)
+add_citra_target(PlaiSysUpdater_Citra PlaiSysUpdater)
+set_target_properties(PlaiSysUpdater PROPERTIES COMPILE_FLAGS "-DCITRA")

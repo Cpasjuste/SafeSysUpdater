@@ -6,7 +6,7 @@
 #include "Debug.h"
 
 Debug::Debug() {
-    fp = fopen("/SafeSys.log", "w");
+    fp = fopen("/PlaiSys.log", "w");
 }
 
 Debug::~Debug() {
